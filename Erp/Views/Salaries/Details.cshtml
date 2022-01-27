@@ -1,0 +1,56 @@
+﻿@model Erp.Models.Salary
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">  Register Gross Salary </h5>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Gross Salary
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.GrossSalary)
+                </dd>
+                <dt class="col-sm-2">
+                    Taxed Salary
+                </dt>
+                <dt class="col-sm-2">
+                    Taxed MOney
+                </dt>
+                <dd class="col-sm-10">
+                    @{var res = Model.GrossSalary - Model.TaxedSalary;}
+                    @res
+                </dd>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TaxedSalary)
+                </dd>
+                <dt class="col-sm-2">
+                    Employee Id
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Employee.EmployeeCode)
+                </dd>
+                <dt class="col-sm-2">
+                    Employee
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Employee.FirstName)   @Html.DisplayFor(model => model.Employee.LastName)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+           
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

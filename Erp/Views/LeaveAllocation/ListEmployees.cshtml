@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Erp.Models.EmployeeVM>
+
+@{
+    ViewData["Title"] = "ListEmployees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*
+<table id="tblData" class="table">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employee_code)
+        </th>
+       
+
+
+
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employee_code)
+            </td>
+            
+            <td>
+                <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id">
+                    <i class="fa fa-search">Details</i>
+                </a>
+
+
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+*@

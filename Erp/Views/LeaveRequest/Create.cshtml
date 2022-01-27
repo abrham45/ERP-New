@@ -1,0 +1,75 @@
+﻿@model Erp.Models.CreateLeaveRequestVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Request Leave</h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="LeaveTypeId" class="control-label"></label>
+                        @Html.DropDownListFor(q => q.LeaveTypeId, new SelectList(Model.LeaveTypes, "Value", "Text"), "Select Leave Type", new { @class = "form-control" })
+                        <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="control-label"></label>
+                                <input type="date" asp-for="StartDate" class="form-control datepicker" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="control-label"></label>
+                                <input type="date" asp-for="EndDate" class="form-control datepicker" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Reason" class="control-label"></label>
+                            <textarea asp-for="Reason" class="form-control ckeditor"></textarea>
+                            <span asp-validation-for="Reason" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white p-2">
+                    <div class="row p-0 m-0">
+                        <div class="col  align-self-start p-0">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                        <div class="col-2  align-self-end  p-0">
+                            <div class="form-group mb-0">
+                                <input type="submit" value="Request Leave" class="btn btn-glow-dark btn-primary ml-4" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+         </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFomat: "yy-mm-dd"
+            });
+        });
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿@model Erp.Models.AttendanceSupExcuses
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            <h5>Attendance Excuses from employees</h5> 
+        </div>
+        <div class="card-body">
+            <div class="row  mt-3">
+                <div class="col-lg">
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Employee)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Employee.FirstName)   @Html.DisplayFor(model => model.Employee.LastName) -  @Html.DisplayFor(model => model.Employee.EmployeeCode)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.AttendanceExcuses.ExcuseName)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.AttendanceExcuses.ExcuseName)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Date)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Date)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Reason)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Reason)
+                        </dd>
+                        <dt class="col-sm-2">
+                           Attendance
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Attendances.Id)
+                        </dd>
+                    </dl>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+
+            @if (Context.User.IsInRole("Supervisor"))
+            {
+
+                <div  class="modal-header">
+                    
+                    <form asp-controller="AttendanceSupExcuses" method="post">
+                        <div class="modal-footer">
+                            <button type="submit" asp-action="Reject" asp-route-id="@Model.Id" class="btn btn-danger">Reject</button>
+                            <button type="submit" asp-action="Approved" asp-route-id="@Model.Id" class="btn btn-success">Approved</button>
+                        </div>
+                    </form>
+                </div>
+            }
+
+                @if (Context.User.IsInRole("TeamLeader"))
+                {
+
+                    <a asp-action="IndexTeam">Back to List</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">Change Status</button>
+                }
+                else
+                {
+                    <a asp-action="Index">Back to List</a>
+                }
+        </div>
+    </div>
+
+

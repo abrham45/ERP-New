@@ -1,0 +1,114 @@
+﻿@model Erp.Models.LeaveRequestVM
+    
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*    <h4>@Html.DisplayFor(model => model.DateRequested)- @Html.DisplayFor(model => model.DateRequested)</h4>*@
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Employee Detail
+        </div>
+        <div class="card-body">
+            <div class="row  mt-3">
+                <div class="col-lg">
+                    <dl class="row">
+                       @* <dt class="col-sm-2">
+                            Employee
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Employee.FirstName)  @Html.DisplayFor(model => model.Employee.LastName)
+                        </dd>*@
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Model.StartDate.ToString("D")
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.EndDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Model.EndDate.ToString("D")
+                        </dd>
+                      @*  <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.LeaveType.Name)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.LeaveType.Name)
+                        </dd>*@
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Reason)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.Raw(Model.Reason)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Feedback)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Feedback)
+                        </dd>
+                    </dl>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <div>
+                @if (Context.User.IsInRole("Director"))
+                {
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">
+                        Change Status
+                    </button>
+                    <a class="btn btn-outline-secondary" asp-action="IndexDir">
+                        <i class="fade fa-arrow-left">  </i>Back to List
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-outline-secondary" asp-action="Index">
+                        <i class="fade fa-arrow-left">  </i>Back to List
+                    </a>
+                }
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form asp-controller="Tasks" method="post">
+                <div class="modal-body">
+                    <textarea type="text" name="Feedback" placeholder="Enter Feedback..." class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" asp-action="RejectRequest" asp-route-id="@Model.Id" class="btn btn-danger">Reject</button>
+
+               
+                    <button type="submit" asp-action="ApproveRequest" asp-route-id="@Model.Id" class="btn btn-success">Approve</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

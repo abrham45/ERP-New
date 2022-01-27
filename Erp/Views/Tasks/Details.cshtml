@@ -1,0 +1,145 @@
+﻿@model Erp.Models.Tasks
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container px-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <div class="card-title mb-5">
+                        <h5 class="text-muted text-">Task Detail</h5>
+                    </div>
+                    <div class="card-tools">
+                        <dl class="row">
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.TaskName)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.TaskName)
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Duration)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Duration)
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.TaskCost)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.TaskCost) ETB
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.TaskProgress)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.TaskProgress) %
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.PercentCoverage)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.PercentCoverage) %
+                            </dd>
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Status)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @if (Model.Status == true)
+                                {
+                                    <a class="label theme-bg text-white f-12 rounded"> Completed</a>
+                                }
+                                else if (Model.Status == false)
+                                {
+                                    <a class="label theme-bg2 text-white f-12 rounded"> In Progress</a>
+                                }
+                                else
+                                {
+                                    <a class="label badge-light   f-12 rounded"> Not Started</a>
+                                }
+                            </dd>
+
+                        </dl>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <div class="card-title mb-5">
+                        <h5 class="text-muted text-">Employee Detail</h5>
+                    </div>
+                    <div class="card-tools">
+                        <dl class="row">
+                            <dt class="col-sm-3">
+                                Employee Name
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Assign.Employee.FirstName)    @Html.DisplayFor(model => model.Assign.Employee.LastName)
+                            </dd>
+                            <dt class="col-sm-3">
+                                Employee Id
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Assign.Employee.EmployeeCode)
+                            </dd>
+                            <dt class="col-sm-3">
+                                Mobile Number
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Assign.Employee.Mobile)
+                            </dd>
+                            <dt class="col-sm-3">
+                                Gender
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Assign.Employee.Sex)
+                            </dd>
+                            <dt class="col-sm-3">
+                                City
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Assign.Employee.City)
+                            </dd>
+
+                        </dl>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card-footer">
+        <div>
+            @if (Context.User.IsInRole("TeamLeader"))
+            {
+               
+                <a asp-action="IndexT"> Back to List</a>
+            }
+            else
+            {
+               
+                <a asp-action="Index"> Back to List</a>
+            }
+
+
+        </div>
+    </div>
+
+
+</div>

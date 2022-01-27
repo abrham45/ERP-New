@@ -1,0 +1,64 @@
+﻿@model Erp.Models.Asset_Allocation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">  Asset Allocation Form </h5>
+            </div>
+        </div>
+
+        <div class="card-body">
+            @if (TempData.ContainsKey("Error"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+            <form asp-action="Create">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">EmployeeId</label>
+                        <input name="EmployeeId" class="form-control" placeholder="Enter Employee code ..." required/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Asset </label>
+                        <input name="AssetId" class="form-control" placeholder="Enter Asset Factory number ..." required/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input name="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="card-footer bg-white p-2">
+                        <div class="row p-0 m-0">
+                            <div class="col align-self-start pl-3">
+                                <a asp-action="Index">Back to List</a>
+                            </div>
+                            <div class="col-2  align-self-end  p-0">
+                                <div class="form-group mb-0">
+                                   
+                                    <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

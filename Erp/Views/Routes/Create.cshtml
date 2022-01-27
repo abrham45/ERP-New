@@ -1,0 +1,53 @@
+﻿@model Erp.Models.Route
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Register Position </h5>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="StartPoint" class="control-label">Start Point</label>
+                    <input asp-for="StartPoint" class="form-control" placeholder="Enter Starting Place..."/>
+                    <span asp-validation-for="StartPoint" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Destination" class="control-label"></label>
+                    <input asp-for="Destination" class="form-control" placeholder="Enter Destination..."/>
+                    <span asp-validation-for="Destination" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Distance" class="control-label">Distance in KM</label>
+                    <input asp-for="Distance" class="form-control" placeholder="Enter Distance..."/>
+                    <span asp-validation-for="Distance" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Expenses" class="control-label"></label>
+                    <p class="text-muted">Insert total expense for this route in ETB</p>
+                    <input asp-for="Expenses" class="form-control" placeholder="Enter Expenses..."/>
+                    <span asp-validation-for="Expenses" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+   
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

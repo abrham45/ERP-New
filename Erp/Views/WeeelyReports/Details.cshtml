@@ -1,0 +1,140 @@
+﻿@model Erp.Models.WeeelyReport
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container repo">
+    <div class="card">
+        <div class="card-header">
+            <div class="row mb-4">
+
+                <div class="col-12">
+                    <h3 class="text-center p-3">
+                        በኢፌድሪ የኢንፎርሜሽን መረብ ደህንነት ኤጀንሲ<br />
+                        FDRE Information Network Security Agency
+                    </h3>
+                </div>
+            </div>
+            <h5>
+                Employee Weekly Report
+            </h5>
+        </div>
+        <div class="card-body bg">
+            <div class="col-8 pl-4 pb-0 repo">
+                <h5> <b class="pr-3">Employee Id፡</b> @Html.DisplayFor(model => model.Employees.EmployeeCode)</h5>
+                <h5> <b class="pr-5">Full Name፡</b> @Html.DisplayFor(model => model.Employees.FirstName) @Html.DisplayFor(model => model.Employees.LastName)</h5>
+                <h5> <b class="pr-5">Date:</b>   @Model.From.ToString("ddd, MMM d, yyyy") =>  @Model.To.ToString("ddd, MMM d, yyyy") </h5>
+            </div>
+
+          
+
+            <div class="text-justify mt-5 pt-5">
+                <h4 class="p-3 bg-secondary text-white"> <b>Tasks</b> </h4>
+
+                <p class="p-3">@Html.Raw(Model.WeeklyRecap)</p>
+
+                <h4 class="p-3 bg-secondary text-white"><b>Which Tasks are Completed</b></h4>
+
+                <p>@Html.Raw(Model.TaskRecap)</p>
+
+                <h4 class="p-3 bg-secondary text-white"><b>Remaining tasks</b></h4>
+
+                <p>@Html.Raw(Model.TaskUnfinshed)</p>
+
+                <h4 class="p-3 bg-secondary text-white"><b>Experienced Challenges </b></h4>
+
+                <p>@Html.Raw(Model.Challenge)</p>
+
+                <h4 class="p-3 bg-secondary text-white"><b>How were the challenges handled?</b> </h4>
+
+                <p>@Html.Raw(Model.ChallengeOvercome)</p>
+            </div>
+
+        </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+
+
+                        @{
+                            if (Context.User.IsInRole("Supervisor"))
+                            {
+                                <a asp-action="IndexSup">Back to List</a>
+                            }
+                            else if (Context.User.IsInRole("Director"))
+                            {
+                                <a asp-action="IndexDir">Back to List</a>
+                            }
+                            else if (Context.User.IsInRole("TeamLeader"))
+                            {
+                                <a asp-action="IndexT">Back to List</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Index">Back to List</a>
+                            }
+                        }
+
+
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            @if (Context.User.IsInRole("Supervisor"))
+                            {
+
+
+                                <div class="col-7">
+
+                                    <form asp-controller="WeeelyReports" asp-action="Approvedsup" asp-route-id="@Model.Id" method="post">
+                                        <button type="submit" class="btn btn-glow-info btn-info">Approve</button>
+
+                                    </form>
+
+
+                                    <form asp-controller="WeeelyReports" asp-action="Reject" asp-route-id="@Model.Id" method="post">
+                                        <button type="submit" class="btn btn-glow-warning btn-warning">Reject</button>
+
+                                    </form>
+                                </div>
+
+                            }
+                            else if (Context.User.IsInRole("TeamLeader"))
+                            {
+                                <div>
+
+                                    <form asp-controller="WeeelyReports" asp-action="Approvedtm" asp-route-id="@Model.Id" method="post">
+                                        <button type="submit" class="btn btn-glow-info btn-info">Approved</button>
+
+                                    </form>
+
+                                    <!--<a class="btn btn-success" asp-controller="WeeelyReports" asp-action="Approved"  asp-route-id="@Model.Id">
+                <i class="fade fa-check">  </i>Approve
+            </a>
+            <a class="btn btn-danger" asp-action="Reject" asp-route-id="@Model.Id">
+                <i class="fade fa-Remove">  </i>Reject
+            </a>-->
+
+                                    <form asp-controller="WeeelyReports" asp-action="Reject" asp-route-id="@Model.Id" method="post">
+                                        <button type="submit" class="btn btn-glow-warning btn-warning">Reject</button>
+
+                                    </form>
+                                </div>
+                            }
+                            else if (Context.User.IsInRole("Director"))
+                            {
+                                <div>
+                                        <form asp-controller="WeeelyReports" asp-action="ApprovedDir" asp-route-id="@Model.Id" method="post">
+                                        <button type="submit" class="btn btn-glow-info btn-info">Approved</button>
+                                        </form>           
+                                        <form asp-controller="WeeelyReports" asp-action="Reject" asp-route-id="@Model.Id" method="post">
+                                            <button type="submit" class="btn btn-glow-warning btn-warning">Reject</button>
+                                        </form>
+                                    
+                                    </div>
+                                    }
+
+                                </div>
+                            </div>
+            </div>
+        </div>
+</div>

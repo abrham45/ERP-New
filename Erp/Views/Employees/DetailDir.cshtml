@@ -1,0 +1,393 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@*<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Employee Detail
+        </div>
+        <div class="card-body">
+            <div class="profile-img-wrap">
+                <div class="profile-img">
+                   @if (Model.User.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" class="avatar" src="data:image/*;base64,@(Convert.ToBase64String(Model.User.ProfilePicture))">
+                    }
+                    else
+                    {
+                        <img id="profilePicture" class="avatar" src="~/assets/images/user/avatar-1.jpg">
+                    }
+
+                </div>
+            </div>
+            <div class="row  mt-3">
+                <div class="col-lg">
+                    <dl class="row">
+
+                        <dt class="col-sm-4 text-right">Employee Code  </dt>
+                        <dd class="col-sm-6">
+
+                            @Html.DisplayFor(model => model.EmployeeCode)
+                        </dd>
+
+                        <dt class="col-sm-4 text-right">Frist Name </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.FirstName)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Last Name </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.LastName)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Sex </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Sex)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Date of Birth</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.DateOfBirth)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Nationality</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Nationality)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Mobile </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Mobile)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Home Telephone </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.HomeTelephone)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Work Telephone </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.WorkTelephone)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Fax </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Fax)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Status </dt>
+                        <dd class="col-sm-6">
+
+                            @if (Model.Status)
+                            {
+                                <i class="fas fa-circle text-c-blue f-10 fa-fw"></i><span class="ml-2 text-c-blue">Active</span>
+                            }
+                            else
+                            {
+                                <i class="fas fa-circle text-c-purple f-10 fa-fw"></i><span class="ml-2 text-c-purple">InActive</span>
+                            }
+
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-lg">
+                    <dl class="row">
+
+                        <dt class="col-sm-4 text-right">P.O.Box</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.POBox)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Country </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Country)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Region </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Region)
+                        </dd>
+                        <dt class="col-sm-4 text-right">City </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.City)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Subcity </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Subcity)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Woreda</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Woreda)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Position</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Positions.Name)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Department</dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Department.Name)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Employment Type </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Employment_Type.Name)
+                        </dd>
+                        <dt class="col-sm-4 text-right">Authority </dt>
+                        <dd class="col-sm-6">
+                            @Html.DisplayFor(model => model.Division.Name)
+                        </dd>
+
+                        <dt class="col-sm-4 text-right">Approve </dt>
+                        <dd class="col-sm-6">
+                            @if (Model.Approve == true)
+                            {
+                                <span class="badge badge-success">Approved</span>
+                            }
+                            else if (Model.Approve == false)
+                            {
+                                <span class="badge badge-danger">Rejected</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Pending </span>
+                            }
+                        </dd>
+
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+*@
+
+
+
+<div class="container">
+    <a asp-action="IndexDir" class="pb-3"><i class="fa fa-arrow-left fa-1x"></i></a>
+    <div class="">
+
+        @if (Context.User.IsInRole("TeamLeader"))
+        {
+            <a asp-action="IndexTeam"><i class="fas fa-arrow-left"></i></a>
+        }
+        else if (Context.User.IsInRole("Supervisor"))
+        {
+            <a asp-action="IndexSup"><i class="fas fa-arrow-left"></i></a>
+        }
+    </div>
+    <div class="row">
+
+
+
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1">Basic Detail</h5>
+                </div>
+                <div class="card-body">
+
+                    @if (Model.User.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" class="avatar" src="data:image/*;base64,@(Convert.ToBase64String(Model.User.ProfilePicture))" style="width: 100px; height: 90px; ">
+                    }
+                    else
+                    {
+                        <img id="profilePicture" class="avatar" src="~/assets/images/user/avatar-1.jpg">
+                    }
+
+
+                </div>
+
+                <div class=" card-block task-details p-0">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Employee:</td>
+                                <td class="text-right">
+
+                                    @Model.FirstName  @Model.LastName
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="far fa-id-card  fa-fw"></i> Id:</td>
+                                <td class="text-right">  @Model.EmployeeCode</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-genderless fa-fw"></i> Sex:</td>
+                                @if (Model.Sex == "Male")
+                                {
+                                    <td class="text-right"><i class="fas fa-male fa-fw fa-1x" style="color: cadetblue;"></i> @Model.Sex</td>
+                                }
+                                else
+                                {
+                                    <td class="text-right"><i class="fas fa-female fa-fw fa-1x" style="color: yellowgreen;"></i> @Model.Sex</td>
+                                }
+
+                            </tr>
+                            <tr>
+                                <td><i class="far fa-calendar-alt m-r-5  fa-fw"></i> Date Of Birth:</td>
+                                <td class="text-right">  @Model.DateOfBirth.ToString("dd MMM, yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fab fa-yandex-international  fa-fw"></i> Nationality:</td>
+                                <td class="text-right">@Model.Nationality</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-question  fa-fw"></i> Status:</td>
+                                <td class="text-right">
+                                    @if (Model.Status == true)
+                                    {
+                                        <span class="badge badge-info p-1">Currently Working </span>
+                                    }
+                                    else if (Model.Status == false)
+                                    {
+                                        <span class="badge badge-warning">Not working</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-warning">Pending </span>
+                                    }
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1">Employee Detail </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ">
+
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><i class="fab fa-dropbox fa-fw"></i> PoBox:</td>
+                                    <td class="text-right">
+
+                                        @Model.POBox
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-fax fa-fw"></i> Fax:</td>
+                                    <td class="text-right">
+
+                                        @Model.Fax
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Address:</td>
+                                    <td class="text-right">  @Model.Region, @Model.City, @Model.Country</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Address:</td>
+                                    <td class="text-right">  @Model.Woreda, @Model.Subcity</td>
+                                </tr>
+
+                                <tr>
+                                    <td><i class="fas fa-calendar-check fa-fw"></i> Approved:</td>
+                                    <td class="text-right">
+                                        @if (Model.Approve == true)
+                                        {
+                                            <span class="badge badge-success">Approved</span>
+                                        }
+                                        else if (Model.Approve == false)
+                                        {
+                                            <span class="badge badge-danger">Rejected</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Pending </span>
+                                        }
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="table-responsive ">
+
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <td><i class="fas fa-adjust m-r-5"></i>Division:</td>
+                                    <td class="text-right">
+
+                                        @Model.Division.Name
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-building fa-fw"></i> Department:</td>
+                                    <td class="text-right">  @Model.Department.Name </td>
+                                </tr>
+                                @* <tr>
+                                <td><i class="fas fa-users fa-fw"></i> Team:</td>
+                                <td class="text-right"> @Model.Team.Name</td>
+                            </tr>*@
+                                <tr>
+                                    <td><i class="fas fa-map-marker fa-fw" style="color:red;"></i> Position:</td>
+                                    <td class="text-right">
+
+                                        @Model.Positions.Name
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Employment Type:</td>
+                                    <td class="text-right">@Model.Employment_Type.Name</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 pl-3">
+                    <form asp-action="Approved" asp-controller="Employees" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-glow-success btn-info">Approve</button>
+                    </form>
+                </div>
+                <div class="col-md-4 pl-3">
+
+                </div>
+                <div class="col-md-4 pl-3">
+
+                    <form asp-controller="Employees" asp-action="Reject" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-danger">Reject</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+       
+     </div>
+
+   
+
+</div>
+
+
+
+
+
+
+

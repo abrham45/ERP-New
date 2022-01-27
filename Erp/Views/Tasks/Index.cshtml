@@ -1,0 +1,127 @@
+﻿
+@model IEnumerable<Erp.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+            Project Task
+        </h3>
+       
+
+        <div class="card-body">
+
+            @if (TempData.ContainsKey("Success"))
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData.ContainsKey("Warning"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Warning"]
+                </div>
+            }
+
+            <table class="table table-bordered table-responsive-md table-striped text-center" id="demoA">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tasks Name</th>
+                        <th class="text-center">Duration</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-center">Task Cost</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Task Progress</th>
+                        <th class="text-center">Percent(%) Coverage</th>
+
+                        <th class="text-center" style="color:red;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Duration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskCost)
+                            </td>
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <a class="label theme-bg text-white f-12 rounded"> Completed</a>
+                                }
+                                else if (item.Status == false)
+                                {
+                                    <a class="label theme-bg2 text-white f-12 rounded"> In Progress</a>
+                                }
+                                else
+                                {
+                                    <a class="label badge-light   f-12 rounded"> Not Started</a>
+                                }
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskProgress)
+                            </td>
+                            <td>    
+                                @Html.DisplayFor(modelItem => item.PercentCoverage)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" style="color:green;"><i class="fa fa-pencil-alt fa-fw"></i></a>
+
+                                <a onclick="deleteConf(@item.Id)" style="color:red;"><i class="fa fa-trash-alt fa-fw"></i></a>
+
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalCenterTitle">Task</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5> Are you sure you want to delete?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glow-dark btn-secondary" data-dismiss="modal">Close</button>
+                <form asp-action="Delete">
+                    <input type="hidden" data-val="true" data-val-required="The DepartmentId field is required." id="PositionIdDelete" name="Id" value="">
+
+                    <button type="submit" class="btn btn-glow-dark btn-danger">Delete</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function deleteConf(id) {
+            $('#PositionIdDelete').val(id);
+            $("#exampleModalCenter").modal()
+        }
+    </script>
+}
+

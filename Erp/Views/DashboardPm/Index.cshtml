@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Erp.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+
+}
+<div class="page-wrapper mx-4">
+
+    <div class="container-fluid mt-4">
+
+        <div class="row">
+            <div class="col-6">
+                <div class="card statistial-visit">
+                    <div class="card-header">
+                        <h5>Task Progress</h5>
+                        <div class="card-header-right">
+                            <div class="btn-group card-option">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="feather icon-more-horizontal"></i>
+                                </button>
+                                <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                                    <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                                    <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                                    <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        @* <h3 class="f-w-300">@Model.Count()</h3>
+                            <span class="d-block"><i class="fas fa-map-marker-alt m-r-10"></i>256 Countries, 5667 Cites </span>*@
+
+                        @if (Model != null)
+                        {
+
+                            @foreach (var item in Model)
+                            {
+                                <div class=" mt-4">
+
+                                    <div class="">
+                                        <h6>  @item.TaskName</h6>
+                                        <div class="">
+                                            <div class="overflow-hidden progress-bar  @(item.TaskProgress <= 30 ?  "theme-bg2" : " ") @(item.TaskProgress >= 70 ?  "theme-bg" : " ")" role="progressbar" style="width: @item.TaskProgress%;height:20px; font-weight:bolder;" aria-valuenow=" @item.TaskProgress" aria-valuemin="0" aria-valuemax="100"> @item.TaskProgress%</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Pie Chart</h5>
+                    </div>
+                    <div class="card-block">
+                        <div id="morris-donut-chart" style="height:300px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Bar [ Simple ] Chart</h5>
+                </div>
+                <div class="card-block">
+                    <div id="morris-bar-chart" style="height:300px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+}

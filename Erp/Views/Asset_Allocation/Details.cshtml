@@ -1,0 +1,65 @@
+﻿@model Erp.Models.Asset_Allocation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Asset Detail</h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Asset.Asset_Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Asset.Asset_Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Asset.serial_number)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Asset.serial_number)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Asset.factory_number)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Asset.factory_number)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Asset.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Asset.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <div>
+
+                @if (Context.User.IsInRole("Inventory"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+                    <a asp-action = "Index"> Back to List</a>
+                    }
+                <a asp-action="Indexuser">Back to List</a>
+            </div>
+        </div>
+    </div>

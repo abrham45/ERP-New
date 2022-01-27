@@ -1,0 +1,54 @@
+﻿@model Erp.Models.Attendance
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-wrapper">
+
+    <div class="container-fluid mt-4">
+        <div class="container">
+            <h1>Edit</h1>
+
+            <h4>Attendance</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="EmployeeId">Employee Id</label>
+                                <input name="EmployeeId" asp-for="Employee.EmployeeCode" class="form-control" placeholder=" Enter Employee Id..." required />
+                                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @* <div class="form-group">
+            <label asp-for="Date" class="control-label"></label>
+            <input asp-for="Date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>*@
+                        <div class="form-group">
+                            <label asp-for="TimeIn" class="control-label"></label>
+                            <input asp-for="TimeIn" class="form-control" />
+                            <span asp-validation-for="TimeIn" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TimeOut" class="control-label"></label>
+                            <input asp-for="TimeOut" class="form-control" />
+                            <span asp-validation-for="TimeOut" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+            </div>
+</div>
+</div>

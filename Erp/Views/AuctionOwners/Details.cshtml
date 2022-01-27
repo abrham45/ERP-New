@@ -1,0 +1,62 @@
+﻿@model Erp.Models.AuctionOwner
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Auction Detail </h5>
+            </div>
+        </div>
+ 
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AuctionNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AuctionNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AssetName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AssetName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(Model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>
+                <dt class="col-sm-2">
+                Specification
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(Model.Specification)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Date.ToString("dd MMM, yyyy")
+                </dd>
+            </dl>
+        </div>
+        <div>
+            @if (Context.User.IsInRole("AuctionTeam"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+            }
+
+                <a asp-action="Index">Back to List</a>
+            </div>

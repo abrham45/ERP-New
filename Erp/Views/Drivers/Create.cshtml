@@ -1,0 +1,197 @@
+﻿@model Erp.Models.Driver
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Register Driver</h5>
+            </div>
+        </div>
+        <div class="text-center my-1">
+            @if (TempData.ContainsKey("Warning"))
+            {
+                <div class="alert alert-danger m-2" role="alert">
+                    @TempData["Warning"]
+                </div>
+            }
+            @if (TempData.ContainsKey("Success"))
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+
+        </div>
+        <form asp-action="CreateDriver" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card-body p-5 mx-3">
+                <div class="row my-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="DriverId" class="control-label">Driver Id</label>
+                            <input asp-for="DriverId" class="form-control" placeholder="Enter Driver Id..." />
+                            <span asp-validation-for="DriverId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Enter First Name..." />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label">Last Name</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Enter Last Name..." />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-4">
+                        <div class="form-group p-3">
+                            <label asp-for="Sex" class="control-label">Sex *</label>
+                            <div class="form-check p-0">
+                                <input id="sex" asp-for="Sex" type="radio" value="Female" />
+                                <label class="form-check-label">Female</label>
+                                <span class="p-5"></span>
+                                <input id="sex" asp-for="Sex" type="radio" value="Male" />
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <span asp-validation-for="Sex" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="ExperienceInYears" class="control-label">Experience In Years</label>
+                            <input asp-for="ExperienceInYears" class="form-control" placeholder="Enter Experience In Years..." />
+                            <span asp-validation-for="ExperienceInYears" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Nationality" class="control-label"></label>
+                            <input asp-for="Nationality" class="form-control" placeholder="Enter Nationality..." />
+                            <span asp-validation-for="Nationality" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Date_of_birth" class="control-label">Date Of Birth</label>
+                            <input asp-for="Date_of_birth" type="date" class="form-control" placeholder="Enter Date Of Birth..." />
+                            <span asp-validation-for="Date_of_birth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Mobile" class="control-label"></label>
+                            <input asp-for="Mobile" class="form-control" placeholder="Enter Mobile..." />
+                            <span asp-validation-for="Mobile" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Region" class="control-label"></label>
+                            <input asp-for="Region" class="form-control" placeholder="Enter Region..." />
+                            <span asp-validation-for="Region" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="City" class="control-label"></label>
+                            <input asp-for="City" class="form-control" placeholder="Enter City..." />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Subcity" class="control-label"></label>
+                            <input asp-for="Subcity" class="form-control" placeholder="Enter SubCity..." />
+                            <span asp-validation-for="Subcity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="Woreda" class="control-label"></label>
+                            <input asp-for="Woreda" class="form-control" placeholder="Enter Woreda..." />
+                            <span asp-validation-for="Woreda" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LicenseNumber" class="control-label">License Number</label>
+                    <input asp-for="LicenseNumber" class="form-control" placeholder="Enter License Number..." />
+                    <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @*<label asp-for="ProfilePicture" class="control-label"></label>
+                            <input asp-for="ProfilePicture" type="file" accept="image/*" class="form-control" />
+                            <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                            <label asp-for="LicensePicture" class="control-label"></label>*@
+                            <img id="profilePicture" >
+                            <input type="file" accept=".png,.jpg,.jpeg,.gif,.tif" asp-for="LicensePicture"
+                                   class="upload" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                                   onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                            @*  <input asp-for="LicensePicture" type="file" class="form-control" />*@
+                            <span asp-validation-for="LicensePicture" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        @*<div class="profile-img">
+                            @if (Model.Input.ProfilePicture != null)
+                            {
+                                <img id="profilePicture" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
+
+                                <div class="fileupload btn text-center">
+                                    <span class="btn-text text-left">edit</span>
+                                    <input type="file" accept=".png,.jpg,.jpeg,.gif,.tif" asp-for="Input.ProfilePicture"
+                                           class="upload" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                                           onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                                    <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                </div>
+                            }
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="LicensePicture" class="control-label"></label>
+                            <img id="profilePicture">
+                            <input type="file" accept=".png,.jpg,.jpeg,.gif,.tif" asp-for="LicensePicture"
+                                   class="upload" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                                   onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                            @*  <input asp-for="LicensePicture" type="file" class="form-control" />*@
+                            <span asp-validation-for="LicensePicture" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                   
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

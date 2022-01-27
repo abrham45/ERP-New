@@ -1,0 +1,32 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+ 
+}
+
+<h3 class="mb-4">Login</h3>
+<form id="account" method="post" class="form-signin">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="input-group mb-3">
+
+        <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="input-group mb-4">
+
+        <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+    </div>
+    <div class="form-group text-left">
+        <div class="checkbox checkbox-fill d-inline">
+            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="" asp-for="Input.RememberMe">
+            <label for="checkbox-fill-a1" class="cr">Remember Me</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary shadow-2 mb-4">Login</button>
+    <p class="mb-2 text-muted">Forgot password? <a asp-page="./ForgotPassword">Forgot Password</a></p>
+    <p class="mb-0 text-muted">Don’t have an account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Signup</a></p>
+</form>
+    

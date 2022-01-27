@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Erp.Models.DepartmentChange>
+  @{
+  ViewData["Title"] = "Index";
+    }
+
+    <div class="container px-5">
+        <div class="card mt-5">
+            <div class="card-header">
+                <div class="card-title mb-5">
+                    <h5 class="text-muted text-">Department Transfer Request</h5>
+                </div>
+                <div class="card-tools">
+                    <div class="row">
+                          <div class="col-7">
+                            <a asp-action="Create" class="btn btn-glow-dark btn-dark ml-4"><i class="feather icon-plus"></i>Add</a>
+                        </div>
+                        <div class="col-4">
+                            <form asp-controller="Experiences" asp-action="Index">
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive px-5">
+                            <table class="table table-border table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            First Name
+                                        </th>
+
+                                        <th>
+                                            Requested Date
+                                        </th>
+                                        <th>
+                                            Reason
+                                        </th>
+                                        <th>
+                                            status
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Employee.FirstName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.sentDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.reason)
+                                        </td>
+
+
+                                        <td>
+                                            @if (item.status == true)
+                                            {
+                                            <span class="badge badge-success">Approved</span>
+                                            }
+                                            else if (item.status == false)
+                                            {
+                                            <span class="badge badge-danger">Rejected</span>
+                                            }
+                                            else
+                                            {
+                                            <span class="badge badge-warning">Pending </span>
+                                            }
+                                        </td>
+
+
+
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* <div class="text-right p-4">
+                <form asp-controller="Employees" asp-action="ExportToExcel" method="post">
+                    <button type="submit" class="btn btn-glow-dark btn-dark"><i class="feather icon-download"></i>Download</button>
+                </form>
+
+            </div>*@
+        </div>
+    </div>
+    <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalCenterTitle">Employee</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h5> Are you sure you want to delete?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-glow-dark btn-secondary" data-dismiss="modal">Close</button>
+                    <form asp-action="Delete">
+                        <input type="hidden" data-val="true" data-val-required="The DepartmentId field is required." id="EmployeeIdDelete" name="Id" value="">
+
+                        <button type="submit" class="btn btn-glow-dark btn-danger">Delete</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function deleteConf(id) {
+            $('#EmployeeIdDelete').val(id);
+            $("#exampleModalCenter").modal()
+        }
+    </script>
+    }
+    }

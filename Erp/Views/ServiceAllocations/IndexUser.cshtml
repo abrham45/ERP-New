@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ServiceAllocation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container px-5">
+    <div class="card mt-5">
+        <div class="card-header">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">Employee to Driver Allocation</h5>
+            </div>
+           
+        </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive px-5">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Employee ID
+                                    </th>
+                                    <th>
+                                        Full Name
+                                    </th>
+                                    <th>
+                                       Phone Number
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.FirstName)   @Html.DisplayFor(modelItem => item.Employee.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.Mobile)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Employee.Mobile)
+                                    </td>
+
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+

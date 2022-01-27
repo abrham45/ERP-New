@@ -1,0 +1,65 @@
+﻿@model Erp.Models.AssetRequest
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Department Transfer Detail
+        </div>
+        <div class="card-body">
+            <div class="row  mt-3">
+                <div class="col-lg">
+                    <dl class="row">
+
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Asset)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Asset)
+                        </dd>
+
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.RequestedDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.RequestedDate)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                    </dl>
+
+                    <div>
+                        <a class="btn btn-success" asp-action="Approved" asp-route-id="@Model.Id">
+                            <i class="fade fa-check">  </i>Approve
+                        </a>
+                        <a class="btn btn-danger" asp-action="Reject" asp-route-id="@Model.Id">
+                            <i class="fade fa-Remove">  </i>Reject
+                        </a>
+                        @if (Context.User.IsInRole("Director"))
+                        {
+                            <a class="btn btn-outline-secondary" asp-action="IndexDir">
+                                <i class="fade fa-arrow-left">  </i>Back to List
+                            </a>
+                        }
+                        else if (Context.User.IsInRole("Inventory"))
+                        {
+                            <a class="btn btn-outline-secondary" asp-action="Index">
+                                <i class="fade fa-arrow-left">  </i>Back to List
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            

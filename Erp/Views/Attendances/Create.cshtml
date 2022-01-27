@@ -1,0 +1,107 @@
+﻿@model Attendance
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+    <div class=" col-8 mx-auto">
+        <div class="auth-content subscribe">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-6  d-none d-md-flex d-lg-flex theme-bg align-items-center justify-content-center">
+
+                        <video id="preview"></video>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-10">
+                                    <h3 class="mb-4">Attendance</h3>
+                                    <form asp-action="SaveAttendance" id="SaveAttendanceForm">
+                                        <div class="form-group">
+                                            <input name="EmployeeId" class="form-control code-input" placeholder="Enter your code"  required/>
+                                           
+                                            <p class="text-danger"></p>
+                                        </div>
+                                        <div class="btn-container text-center mt-5">
+                                            <button class="btn btn-glow-dark btn-primary">Done</button>
+                                        </div>
+                                    </form>
+                                    @* <button class="btn btn-primary shadow-2 mb-4">Sign up</button>
+                                        <p class="mb-0 text-muted">Allready have an account? <a href="auth-signin-v4.html"> Log in</a></p>*@
+                                </div>
+                                <div class="text-center p-2 my-3">
+                                    @if (TempData.ContainsKey("Warning"))
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            @TempData["Warning"]
+                                        </div>
+                                    }
+                                    @if (TempData.ContainsKey("Success") && TempData.ContainsKey("SuccessDate"))
+                                    {
+                                <div class="alert alert-success" role="alert" style="font-size:20px;">
+                                    <b> @TempData["Success"]</b>   <br /><br />
+                                    @TempData["SuccessDate"]
+                                </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @section Scripts{
+
+        @*    <script src="../assets/js/vendor-all.min.js"></script>
+            <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+                let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                scanner.addListener('scan', function (content) {
+                    $('#EmployeeId').val(JSON.parse(content).empid);
+                    scanner.stop()
+                    $('#SaveAttendanceForm').submit()
+                }); queueMicrotask
+                Instascan.Camera.getCameras().then(function (cameras) {
+                    if (cameras.length > 0) {
+                        scanner.start(cameras[cameras.length - 1]);
+                    } else {
+                        console.error('No cameras found.');
+                    }
+                }).catch(function (e) {
+                    console.error(e);
+                });*@
+
+        <script src="~/assets/js/jquery-3.2.1.min.js"></script>
+        <script src="~/assets/js/bootstrap.min.js"></script>
+
+        <script>
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            scanner.addListener('scan', function (content) {
+                $('#EmployeeId').val(JSON.parse(content).empid);
+                scanner.stop()
+                $('#SaveAttendanceForm').submit()
+            }); queueMicrotask
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[cameras.length - 1]);
+                } else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+        </script>
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+
+
+

@@ -1,0 +1,77 @@
+﻿@model Erp.Models.FieldWork
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="container px-5">
+        <div class="card p-3">
+            <div class="card-header border-bottom-0">
+                <div class="card-title mb-5">
+                    <h5 class="text-muted text-"> Field Work </h5>
+                </div>
+            </div>
+
+            <form asp-action="Create">
+       
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row p-0 m-0">
+
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectId" class="control-label">Project</label>
+                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                                <span asp-validation-for="ProjectId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group  p-3">
+                                <label asp-for="StartDate.Date">Start Date</label>
+                                <input asp-for="StartDate.Date" class="form-control" />
+                                <span asp-validation-for="StartDate.Date" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-6 p-0">
+
+                            <div class="form-group  p-3">
+                                <label asp-for="Place">Where Do You GO?</label>
+                                <input asp-for="Place" class="form-control" placeholder=" Enter the place you will go .." required />
+                                <span asp-validation-for="Place" class="text-danger"></span>
+                            </div>
+                            <div class="form-group  p-3">
+                                <label asp-for="ReturnDate">Return Date</label>
+                                <input asp-for="ReturnDate" class="form-control" />
+                                <span asp-validation-for="ReturnDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        </div>
+
+
+                </div>
+                <div class="card-footer bg-white p-2">
+                    <div class="row p-0 m-0">
+                        <div class="col align-self-start pl-3">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                        <div class="col-2  align-self-end  p-0">
+                            <div class="form-group mb-0">
+
+                             
+                                <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+

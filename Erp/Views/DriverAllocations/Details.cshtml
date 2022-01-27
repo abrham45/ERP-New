@@ -1,0 +1,39 @@
+﻿@model Erp.Models.DriverAllocation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Driver Allocation Detail
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Route)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Route.StartPoint)   @Html.DisplayFor(model => model.Route.Destination)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Driver)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Driver.LicenseNumber) - @Html.DisplayFor(model => model.Driver.FirstName) @Html.DisplayFor(model => model.Driver.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Vehicle)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Vehicle.Model)     @Html.DisplayFor(model => model.Vehicle.PlateNumber)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+﻿@model Erp.Models.Experience
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .avatarIMG {
+        position: absolute;
+        width: 50%;
+        height: 90%;
+        top: -30%;
+        right: 30%;
+    }
+    .repo {
+        position: relative;
+        padding: 0 20% 0 20%;
+
+    }
+ 
+    .bg {
+        background: url("data:image/jpeg;base64,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") no-repeat center;
+    
+        }
+   .bg::after{
+       opacity: 0.1;
+   }
+</style>
+<div class="container repo">
+    <div class="card">
+        <div class="card-header">
+            <div class="row mb-4">
+
+                <div class="col-12">
+                    <h3 class="text-center p-3">
+                        በኢፌድሪ የኢንፎርሜሽን መረብ ደህንነት ኤጀንሲ<br />
+                        FDRE Information Network Security Agency
+                    </h3>
+                </div>
+            </div>
+            <h6 class="pt-4">
+                የስራ ልምድ/
+                Work Experience
+            </h6>
+
+        </div>
+        <div class="card-body bg">
+         
+
+            <div class="row mb-4 ">
+                <div class="col-8 pl-4 pb-0 repo">
+                    <h6 class="">ሙሉ ስም፡ @Html.DisplayFor(model => model.Employee.FirstName)</h6>
+                    <h6 class="pb-3">Full Name: @Html.DisplayFor(model => model.Employee.FirstName)</h6>
+
+                    <h6 class="">የትውልድ ዘመን፡ @Html.DisplayFor(model => model.Employee.DateOfBirth)</h6>
+                    <h6 class="pb-3">Birth Date: @Html.DisplayFor(model => model.Employee.DateOfBirth)</h6>
+
+                    <h6 class="">የአገልግሎት ዘመን፡ @Html.DisplayFor(model => model.Employee.StartDate)</h6>
+                    <h6 class="pb-3">Date of Recruitment: @Html.DisplayFor(model => model.Employee.StartDate)</h6>
+
+                </div>
+                <div class="col-4 pb-0">
+                    @if (Model.User.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" class="avatarIMG" src="data:image/*;base64,@(Convert.ToBase64String(Model.User.ProfilePicture))">
+                    }
+                    else
+                    {
+                        <img id="profilePicture" class="avatarIMG" src="~/assets/images/user/avatar-1.jpg">
+                    }
+                </div>
+            </div>
+
+            <p>
+                This is to certify that <b>@Html.DisplayFor(model => model.Employee.FirstName)</b>  was working at FDRE INSA as <b> @Html.DisplayFor(model => model.Employee.Positions.Name)</b>  from <b> @Html.DisplayFor(model => model.Employee.StartDate)</b>  to <b> @Html.DisplayFor(model => model.Employee.EndDate)</b> .
+                During this period, his services were found to be satisfactory in carrying out the job duties.
+
+                Work Responsibilities - were to:
+
+                1) Tend open-developer machine that develops dye in dyed or printed cloth, removes excess color from cloth, and wets cloth before soaping process
+
+                2) Thread end of roll of cloth through machine rolls
+
+                3) Turn steam valves to heat machine tank & opens valves to admit specified chemicals into tank to start water spray
+
+                4) Turn handwheels to close wringer rolls starts machine
+
+                5) Straighten wrinkles in cloth as cloth enters machine
+
+                6) Sews end of new roll of cloth to end in machine during processing, using portable sewing machine
+
+                7) Drain tank of machine after cloth is processed
+
+                8) May mix chemicals in storage tank to develop desired color of cloth.
+
+                We wish him/her all the best in his future
+            </p>
+            <p>
+                This is to certify that <b>@Html.DisplayFor(model => model.Employee.FirstName)</b>  was working at FDRE INSA as <b> @Html.DisplayFor(model => model.Employee.Positions.Name)</b>  from <b> @Html.DisplayFor(model => model.Employee.StartDate)</b>  to <b> @Html.DisplayFor(model => model.Employee.EndDate)</b> .
+                During this period, his services were found to be satisfactory in carrying out the job duties.
+
+                Work Responsibilities - were to:
+
+                1) Tend open-developer machine that develops dye in dyed or printed cloth, removes excess color from cloth, and wets cloth before soaping process
+
+                2) Thread end of roll of cloth through machine rolls
+
+                3) Turn steam valves to heat machine tank & opens valves to admit specified chemicals into tank to start water spray
+
+                4) Turn handwheels to close wringer rolls starts machine
+
+
+                @*     @{ int exe = DateTime.Now.Year;
+                        int ex = Model.Employee.StartDate.Year;
+                        var times = exe - ex;}
+                    loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem
+                    @times;*@
+        </div>
+        <div class="card-footer">
+            Employer name <br />
+           Employer position <br />
+           Organization sign/stamp <br />
+        </div>
+    </div>
+
+        <div class="text-right p-4 card-footer">
+  
+            <div class="row p-0 m-0">
+                <div class="col-2">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+                <div class="col-4 "></div>
+                <div class="col  p-0 m-0">
+                    <form asp-controller="Experiences" asp-action="Approved" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-glow-info btn-info">Approve</button>
+
+                    </form>
+                </div>
+                <div class="col-2 p-0">
+                    <form asp-controller="Experiences" asp-action="Reject" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="btn btn-glow-warning btn-warning">Reject</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+

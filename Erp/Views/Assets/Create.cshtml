@@ -1,0 +1,81 @@
+﻿@model Erp.Models.Asset
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Create Project</h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Asset_Name" class="control-label">Asset Name</label>
+                                <input asp-for="Asset_Name" class="form-control datepicker" />
+                                <span asp-validation-for="Asset_Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="factory_number " class="control-label">Factory Number*</label>
+                                <input asp-for="factory_number " class="form-control datepicker" />
+                                <span asp-validation-for="factory_number" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="serial_number " class="control-label">Serial Number</label>
+                                <input asp-for="serial_number " class="form-control datepicker" />
+                                <span asp-validation-for="serial_number" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Price " class="control-label">Price </label>
+                                <input asp-for="Price" class="form-control datepicker" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="SupplierId" class="control-label">Suuplier Name</label>
+                                <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
+                                <span asp-validation-for="SupplierId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Asset_typeId" class="control-label">Asset Type</label>
+                                <select asp-for="Asset_typeId" class="form-control" asp-items="ViewBag.Asset_typeId"></select>
+                                <span asp-validation-for="Asset_typeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Create" />
+                        </div>
+                    </div>
+
+</form>
+        </div>
+        </div>
+
+
+
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

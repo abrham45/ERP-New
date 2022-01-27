@@ -1,0 +1,120 @@
+﻿@model Erp.Models.Risk
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Risk  </h5>
+            </div>
+        </div>
+
+        <form asp-action="Create">
+            @if (TempData.ContainsKey("Error"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row p-0 m-0">
+
+                <div class="col-6 p-0">
+                    <div class="form-group  p-3">
+                        <label>Name</label>
+                        <input asp-for="Name" class="form-control" placeholder=" Enter Name .." required />
+                    </div>
+                </div>
+                <div class="col-6 p-0">
+                    <div class="form-group  p-3">
+                        <label asp-for="RiskTypeId" class="control-label">Risk Type </label>
+                        <select asp-for="RiskTypeId" class="form-control" asp-items="ViewBag.RiskTypeId"></select>
+                        <span asp-validation-for="RiskTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 p-0">
+                    <div class="form-group  p-3">
+                        <label asp-for="Priority">Priority</label>
+                        <input asp-for="Priority" class="form-control" placeholder=" Enter Priority .." required />
+                        <span asp-validation-for="Priority" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-0 m-0">
+                <div class="col-6 p-0">
+                    <div class="form-group  p-3">
+                        <label asp-for="Likelyhood">Likelyhood</label>
+                        <input asp-for="Likelyhood" class="form-control" placeholder=" Enter Likelyhood...." required />
+                        <span asp-validation-for="Likelyhood" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 p-0">
+                    <div class="form-group  p-3">
+                        <label asp-for="Imapact">Imapact</label>
+                        <input asp-for="Imapact" class="form-control ckeditor" placeholder=" Enter Imapact...." required />
+                        <span asp-validation-for="Imapact" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 p-0">
+                    <div class="form-group  p-3 ">
+                        <label asp-for="AnnualOccurrence">Annual Occurrence</label>
+                        <input asp-for="AnnualOccurrence" class="form-control" placeholder=" Enter Annual Occurrence...." required />
+                        <span asp-validation-for="Likelyhood" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 pl-4">
+                    <label asp-for="Status">Status</label>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" name="Status" type="checkbox" value="Low" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Low
+                        </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" name="Status" type="checkbox" value="Medium" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Medium
+                        </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" name="Status" type="checkbox" value="High" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            High
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+                
+
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

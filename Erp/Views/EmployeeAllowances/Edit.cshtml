@@ -1,0 +1,52 @@
+﻿@model Erp.Models.EmployeeAllowance
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Update Employee Allowance   </h5>
+            </div>
+        </div>
+        <div class="text-center p-2 my-1">
+            @if (TempData.ContainsKey("Warning"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Warning"]
+                </div>
+            }
+
+
+        </div>
+        <div class="card-body">
+            <div class="pl-3 mx-auto">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Employee Id</label>
+                        <input name="EmployeeId" class="form-control"  placeholder="Enter Employee Id..." required>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Allowance</label>
+                        <select asp-for="AllowanceId" class="form-control" asp-items="ViewBag.AllowanceId"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

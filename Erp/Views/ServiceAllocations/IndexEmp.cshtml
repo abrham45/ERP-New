@@ -1,0 +1,84 @@
+﻿@model Erp.Models.ServiceAllocation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card-header">
+        Service Detail
+    </div>
+    <div class="row">
+        <div class="col-md-4 shadow-3">
+            <div class=" card-block task-details p-0 spa">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Vehicle:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Vehicle.Model)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-id-card  fa-fw"></i> Plate Number:</td>
+                            <td class="text-right">  @Model.DriverAllocation.Vehicle.PlateNumber</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-2 p-3"></div>
+        <div class="col-md-4 shadow-3">
+            <div class=" card-block task-details p-0 spa">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Driver Id:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Driver.DriverId)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Full Name:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Driver.FirstName)       @Html.DisplayFor(model => model.DriverAllocation.Driver.LastName)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Mobile:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Driver.Mobile)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> City:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Driver.City)
+
+                            </td>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Sub City:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.DriverAllocation.Driver.Subcity)
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

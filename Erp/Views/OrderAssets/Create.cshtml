@@ -1,0 +1,92 @@
+﻿@model Erp.Models.OrderAsset
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">Order Asset</h5>
+            </div>
+        </div>
+        @if (TempData.ContainsKey("Success"))
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["Success"]
+            </div>
+        }
+        @if (TempData.ContainsKey("Warning"))
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["Warning"]
+            </div>
+        }
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Order Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="p-3 bg-secondary text-white"> <b>Description</b> </h4>
+                            <textarea asp-for="Description" class="form-control ckeditor" required></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Asset Type</label>
+                            <select asp-for="AssetTypeId" class="form-control" asp-items="ViewBag.AssetTypeId"></select>
+                            <span asp-validation-for="AssetTypeId" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Quantity" class="control-label"></label>
+                            <input asp-for="Quantity" class="form-control" placeholder="Enter Quantity" />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EstimatedPrice" class="control-label">Estimated Price</label>
+                            <input asp-for="EstimatedPrice" class="form-control" placeholder="Enter Estimated Price" />
+                            <span asp-validation-for="EstimatedPrice" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 class="p-3 bg-secondary text-white"> <b>Description</b> </h4>
+                            <textarea asp-for="Specification" class="form-control ckeditor" required></textarea>
+                            <span asp-validation-for="Specification" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+
+
+
+                
+            </form>
+        </div>
+        <div class="card-footer">
+            @if (Context.User.IsInRole("TeamLeader"))
+            {
+                <a asp-action="Index">Back to List</a>
+            }else if (Context.User.IsInRole("StoreManager"))
+            {
+                <a asp-action="IndexUser">Back to List</a>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

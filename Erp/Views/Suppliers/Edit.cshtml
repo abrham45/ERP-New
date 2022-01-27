@@ -1,0 +1,81 @@
+﻿@model Erp.Models.Supplier
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Register Supplier</h5>
+            </div>
+        </div>
+
+        <form asp-action="Edit">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-0 m-0">
+
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="CompanyName">Company Name</label>
+                            <input asp-for="CompanyName" class="form-control" />
+                            <span asp-validation-for="CompanyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Mobile">Mobile</label>
+                            <input asp-for="Mobile" class="form-control" />
+                            <span asp-validation-for="Mobile" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-0 m-0">
+
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Address">Address</label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+               
+
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+
+                            <input type="submit" value="Edit" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

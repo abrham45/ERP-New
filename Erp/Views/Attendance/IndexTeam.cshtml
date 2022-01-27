@@ -1,0 +1,129 @@
+﻿@model PaginatedList<Erp.Models.Attendances>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container px-5">
+    <div class="card mt-5 shadow-4">
+        <div class="card-header">
+            <div class="card-title mb-5">
+                <h5 class="text-muted">Daily Employee Attendance</h5>
+            </div>
+            <div class="card-tools">
+                <div class="row">
+                    <div class="col-7">
+                        <a asp-action="Create" class="btn btn-glow-dark btn-dark ml-4"><i class="feather icon-plus"></i>Create</a>
+                    </div>
+                    <div class="col-4">
+                        
+                            <form asp-controller="Attendances" asp-action="Index">
+                                <div class="input-group input-group-md">
+                                    <input type="search" class="form-control float-right" name="attendance" placeholder="Search..." />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary" type="submit"> <i class="fa fa-search"></i> </button>
+                                    </div>
+                                </div>
+                            </form>
+                        
+                    </div>
+                    <div class="col-1">
+                        <a asp-action="Index">See All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive px-5 pb-3">
+                        <table class="table table-border table-hover">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2"># ID</th>
+
+                                    <th rowspan="2">Name</th>
+                                    <th rowspan="2">Date</th>
+                                    <th colspan="2" class="text-black text-center">Morning</th>
+                                    <th colspan="2" class="text-black text-center">Afternoon</th>
+
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Check In
+                                    </th>
+                                    <th>
+                                        Check Out
+                                    </th>
+                                    <th>
+                                        Check In
+                                    </th>
+                                    <th>
+                                        Check Out
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Employee.FirstName)   @Html.DisplayFor(modelItem => item.Employee.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MorningCheckin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MorningCheckout)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AfternoonCheckin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AfternoonCheckout)
+                                        </td>
+                                        <th>
+
+                                            <a asp-action="Edit" asp-route-id="@item.Id">
+                                                <i class="fa fa-edit text-green fa-fw"></i>
+                                            </a>
+
+                                            <a asp-action="DetailsSup" asp-route-id="@item.EmployeeId">
+                                                <i class="fa fa-angle-double-right fa-fw"></i>
+                                            </a>
+                                        </th>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+                <div class="card-footer">
+                    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)">
+
+                        <i class="fade fa-arrow @prevDisabled">  </i>Previous
+                    </a>
+
+                    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)">
+
+                        <i class="fade fa-arrow @nextDisabled">  </i>Next
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

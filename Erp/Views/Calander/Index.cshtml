@@ -1,0 +1,151 @@
+﻿@model Erp.Models.EventViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calander</title>
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="~/css/boom.css">
+    <link rel="stylesheet" href="~/css/cooo.css">
+    <!-- CSS Includes -->
+    <!-- Favicon icon -->
+
+    <!-- fontawesome icon -->
+   
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <style type="text/css">
+
+        .field-validation-error {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="index.html" class="b-brand">
+                    <div class="b-bg">
+                        <i class="feather icon-trending-up"></i>
+                    </div>
+                    <span class="b-title">ERP</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Employees</span></a>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Departments"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Departments</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Positions"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Positions</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Create" asp-controller="hierarchicals"><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Office hierarchical</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Attendances"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Employment_Type"><span class="pcoded-micon"><i class="feather icon-user-check"></i></span><span class="pcoded-mtext">Employee Type</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Calander"><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Calander</span></a>
+                    </li>
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave</span></a>
+                        <ul class="pcoded-submenu">
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Leave Types</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveAllocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">Leave Allocation</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"></span><span class="pcoded-mtext">Leave Request</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="pcoded-main-container">
+
+            <div class="pcoded-content p-0">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper m-0">
+                            <div class="container">
+                                <div id='calendar'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <
+
+                            <!-- JS includes -->
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+                            <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+                            <script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+
+                            <script type="text/javascript">
+
+                    $(document).ready(function () {
+                        $('#calendar').fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,agendaWeek,agendaDay'
+                            },
+                            firstDay: 1, //The day that each week begins (Monday=1)
+                            slotMinutes: 60,
+                            events: '@Url.RouteUrl(new{ action="GetEvents", controller="Home"})'
+                        });
+                    });
+
+
+
+                            </script>
+</body>
+        </html>
+                

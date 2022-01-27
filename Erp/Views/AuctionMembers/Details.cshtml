@@ -1,0 +1,114 @@
+﻿@model Erp.Models.AuctionMember
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">Auction Application Detail</h5>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AuctionNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AuctionNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CompanyName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(Model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Specification)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.Raw(Model.Specification)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.Status == true)
+                    {
+                        <span class="badge badge-success">Approved</span>
+                    }
+                    else if (Model.Status == false)
+                    {
+                        <span class="badge badge-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning">Pending </span>
+                    }
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Date.ToString("dd MMM, yyyy")
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @if (Model.Status == null & Context.User.IsInRole("AuctionTeam"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+                <a asp-action="Index">Back to List</a>
+            }
+            else if (Context.User.IsInRole("Director"))
+            {
+                <a asp-action="Index">Back to List</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">Change Status</button>
+            }
+
+
+        </div>
+    </div>
+</div>
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form asp-controller="AuctionMembers" method="post">
+                <p class="py-2 pl-1">Give a reason why you approve or disapprove this attendance excuse.</p>
+                <div class="modal-body">
+                    <textarea type="text" name="Reason" placeholder="Give Feedback ..." class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" asp-action="Reject" asp-route-id="@Model.Id" class="btn btn-danger">Reject</button>
+                    <button type="submit" asp-action="Approved" asp-route-id="@Model.Id" class="btn btn-success">Approved</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

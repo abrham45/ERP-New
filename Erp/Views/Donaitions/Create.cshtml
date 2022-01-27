@@ -1,0 +1,75 @@
+﻿@model Erp.Models.Donaition
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Donaitions </h5>
+            </div>
+        </div>
+
+        <form asp-action="Create">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-0 m-0">
+                    @if (TempData.ContainsKey("Error"))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label>Asset Factory Number</label>
+                            <input name="AssetId" class="form-control" placeholder=" Enter Factory number .." required />
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="DonaitedTo" class="control-label">Company Name</label>
+                            <input asp-for="DonaitedTo" class="form-control" placeholder="Enter Company Name . . .">
+                            <span asp-validation-for="DonaitedTo" class="text-danger"></span>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reason" class="control-label">Reason</label>
+                    <textarea asp-for="Reason" class="form-control" rows="3" placeholder="Enter Reason of the fault . . ."></textarea>
+                    <span asp-validation-for="Reason" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+
+                            <input type="reset" value="Clear" class="btn btn-glow-dark btn-secondary  mr-3" />
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+}

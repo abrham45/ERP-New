@@ -1,0 +1,116 @@
+﻿@model Erp.Models.DMaintainance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Maintainance Details
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.Status == true)
+                    {
+                        <span class="badge badge-success">Approved</span>
+                    }
+                    else if (Model.Status == false)
+                    {
+                        <span class="badge badge-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning">Pending </span>
+                    }
+                </dd>
+
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Date.ToString("dd MMM, yyyy")
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Driver)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Driver.FirstName)   @Html.DisplayFor(model => model.Driver.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    Driver Id
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.DriverId
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.vechicles)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.vechicles.Model) 
+                </dd>
+                <dt class="col-sm-2">
+                    Vehicle Plate Number
+                </dt>
+                <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.vechicles.PlateNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Feedback)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Feedback)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @if (Context.User.IsInRole("Driver"))
+            {
+                @if (Model.Status == null)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a><br />
+                }
+                    <a asp-action="IndexUser"> Back to List</a>
+                }
+                else if (Context.User.IsInRole("FleetTeam"))
+                {
+                    <a asp-action="Index"> Back to List</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">
+                        Change Status
+                    </button>
+                }
+            </div>
+    </div>
+</div>
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form asp-controller="FieldWorks" method="post">
+                <div class="form-group  p-3">
+                    <label asp-for="Feedback">FeedBack</label>
+                    <textarea name="Feedback" class="form-control"></textarea>
+                    <span asp-validation-for="Feedback" class="text-danger"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" asp-action="Reject" asp-route-id="@Model.Id" class="btn btn-danger">Reject</button>
+                    <button type="submit" asp-action="Approve" asp-route-id="@Model.Id" class="btn btn-success">Approve</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model Erp.Models.Plan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Register Plan</h5>
+            </div>
+        </div>
+
+        <form asp-action="Create">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FiscalYear" class="control-label"></label>
+                    <input asp-for="FiscalYear" class="form-control" placeholder="Enter Fiscal Year of this plan..."/>
+                    <span asp-validation-for="FiscalYear" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PlanTypeId" class="control-label"></label>
+                    <select asp-for="PlanTypeId" class="form-control" asp-items="@ViewBag.PlanTypeId"></select>
+                    <span asp-validation-for="PlanTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Period" class="control-label"></label>
+                    <input asp-for="Period" class="form-control"  placeholder="Enter Period this plan will be conducted..."/>
+                    <span asp-validation-for="Period" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control ckeditor"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProjectNumber" class="control-label"></label>
+                    <input asp-for="ProjectNumber" class="form-control"  placeholder="Enter Fiscal Year of this plan..."/>
+                    <span asp-validation-for="ProjectNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="OperationExpense" class="control-label"></label>
+                    <input asp-for="OperationExpense" class="form-control"  placeholder="Enter Operation Expense ..."/>
+                    <span asp-validation-for="OperationExpense" class="text-danger"></span>
+                </div>
+
+            </div>
+  
+             <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

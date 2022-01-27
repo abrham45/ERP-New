@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Erp.Models.Experience>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Country)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.Id">Approve</a> 
+                    <a onclick="deleteConf(@item.Id)">
+                        <i class="fa fa-trash-alt text-red fa-fw"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalCenterTitle">Employee</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5> Are you sure you want to delete?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glow-dark btn-secondary" data-dismiss="modal">Close</button>
+                <form asp-action="Delete">
+                    <input type="hidden" data-val="true" data-val-required="The DepartmentId field is required." id="EmployeeIdDelete" name="Id" value="">
+
+                    <button type="submit" class="btn btn-glow-dark btn-danger">Delete</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function deleteConf(id) {
+            $('#EmployeeIdDelete').val(id);
+            $("#exampleModalCenter").modal()
+        }
+    </script>
+}

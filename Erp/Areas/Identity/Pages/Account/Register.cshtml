@@ -1,0 +1,75 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+
+
+}
+
+<h3 class="mb-4">Signup</h3>
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-signin">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="input-group mb-3">
+
+        <input asp-for="Input.FirstName" class="form-control" placeholder="Firstname" />
+
+    </div>
+    <div class="input-group mb-4">
+
+        <input asp-for="Input.LastName" class="form-control" placeholder="Lastname" />
+
+    </div>
+    <div class="input-group mb-4">
+
+        <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+
+    </div>
+    
+    <div class="input-group mb-4">
+
+        <input asp-for="Input.Password" class="form-control" type="password" placeholder="Password" id="myInput" /><br />
+
+    </div>
+    <div class="input-group mb-4">
+
+        <input asp-for="Input.ConfirmPassword" class="form-control" type="password" placeholder="ConfirmPassword" id="myInpute" />
+
+    </div>
+    <div class="input-group mb-4">
+        <div class="checkbox checkbox-fill d-inline">
+            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" onclick="myFunction()">
+            <label for="checkbox-fill-a1" class="cr">Show Password</label>
+        </div>
+    </div>
+
+        <div class="input-group mb-4">
+            <button type="submit"  class="btn btn-primary shadow-2 mb-4 btn-block">Sign Up</button>
+        </div>
+        <p class="mb-0 text-muted">Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login</a></p>
+</form>
+@section Scripts {
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            var y = document.getElementById("myInpute");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+
+           
+            if (y.type === "password") {
+                y.type = "text";
+            } else {
+                y.type = "password";
+            }
+        }
+    </script>
+}
+
+
+
+
+

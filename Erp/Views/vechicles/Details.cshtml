@@ -1,0 +1,60 @@
+﻿@model Erp.Models.vechicles
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Vehicle Detail
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Model)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Model)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PlateNumber)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PlateNumber)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsInsured)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (Model.IsInsured == true)
+                    {
+                        <span class="badge badge-success">Insured</span>
+                    }
+                    else if (Model.IsInsured == false)
+                    {
+                        <span class="badge badge-danger">Not Insured</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning">Uncertain </span>
+                    }
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.vechiclesType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.vechiclesType.Type)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @if (Context.User.IsInRole("FleetTeam"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> <br />
+            }
+
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

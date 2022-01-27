@@ -1,0 +1,57 @@
+﻿@model Erp.Models.EmployeeAllocation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Allocate Employee to Vehicle</h5>
+            </div>
+        </div>
+        <div class="text-center my-1">
+            @if (TempData.ContainsKey("Warning"))
+            {
+                <div class="alert alert-danger m-2" role="alert">
+                    @TempData["Warning"]
+                </div>
+            }
+          @if (TempData.ContainsKey("Success"))
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="VehicleId" class="control-label">Vehicle Plate Number</label>
+                    <input name="VehicleId" class="form-control" placeholder="Enter Vehicle Plate Number..." />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmployeeId" class="control-label">Employee Id</label>
+                    <input name="EmployeeId" class="form-control" placeholder="Enter Employee Id..." />
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

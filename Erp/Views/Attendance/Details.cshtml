@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Erp.Models.Attendances>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1">Employee Details</h5>
+                </div>
+                <div class="card-body">
+                 @*   @foreach (var item in Model)
+                    {
+                        @if (item.Employee.UserId != null)
+                        {
+                            <div class="mx-auto text-center mb-3">
+
+                                <img id="profilePicture" class="avatar" src="data:image/*;base64,@(Convert.ToBase64String(item.Employee.User.ProfilePicture))">
+
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
+                    }*@
+                </div>
+                <div class=" card-block task-details p-0">
+                    <table class="table">
+                        <tbody>
+
+                            @foreach (var item in Model.Select(e => e.Employee).Distinct())
+                            {
+                                <tr>
+                                    <td><i class="fas fa-adjust m-r-5"></i>Employee:</td>
+                                    <td class="text-right">
+
+                                        @item.FirstName  @item.LastName
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Id:</td>
+                                    <td class="text-right">  @item.EmployeeCode</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-credit-card m-r-5"></i>Sex:</td>
+                                    <td class="text-right">@item.Sex</td>
+                                </tr>
+
+                                <tr>
+                                    <td><i class="fas fa-thermometer-half m-r-5"></i>Status:</td>
+                                    <td class="text-right">
+                                        @if (item.Status == true)
+                                        {
+                                            <span class="badge badge-success">Active</span>
+                                        }
+                                        else if (item.Status == false)
+                                        {
+                                            <span class="badge badge-danger">IN Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Pending </span>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1"> Work Hour </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                        @{DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+                            int daysTillCurrentDay = currentDay - DayOfWeek.Monday;
+                            DateTime dates;
+                            TimeSpan total = TimeSpan.Zero;}
+                        <table class="table table-border table-hover table-striped custom-table datatable mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Work Hour</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = daysTillCurrentDay; i >= 1; i--)
+                                {
+                                    <tr>
+                                        @{dates = DateTime.Now.AddDays(-i);}
+
+                                        <td>@dates.Date.DayOfWeek</td>
+                                        <td>
+                                            @foreach (var items in Model.GroupBy(e => e.Date.DayOfWeek))
+                                            {
+                                                @foreach (var item1 in items)
+                                                {
+                                                    if (dates.Date == item1.Date)
+                                                    {
+                                                        total = total + item1.WorkHour;
+                                                        if (item1.WorkHour == TimeSpan.Zero)
+                                                        {
+                                                            <span class="badge badge-danger p-1">Incomplete</span>
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <span class="text-success font-weight-bold f-16"> @item1.WorkHour</span>
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                               
+                                <tr>
+                                    <td class="badge badge-info p-2 m-2">TOTAL</td>
+                                    <td>@total</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="font-weight-bolder p-1"> Weekly Work Hour </h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-border table-hover table-striped custom-table datatable mb-0">
+
+                    <thead>
+                
+                        <tr>
+                            <th>Month</th>
+                            <th>Total Work Hour</th>
+                        </tr>                   
+                        </thead>
+                    <tbody>
+                        @{TimeSpan sum = TimeSpan.Zero; }
+                        @foreach (var items2 in Model.GroupBy(e => e.Date.Month))
+                        {
+
+                            <tr>
+                                <td>@items2.Key</td>
+                                <td>
+
+                                    @foreach (var item in items2)
+                                    {
+                                        sum = sum.Add(item.WorkHour);
+
+                                        @if (sum == TimeSpan.Zero)
+                                        {
+                                            <span class="badge badge-danger p-1">None!</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-success font-weight-bold f-16"> @sum </span>
+                                        }
+                                    }
+
+                                </td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+

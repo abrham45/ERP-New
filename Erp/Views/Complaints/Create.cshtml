@@ -1,0 +1,65 @@
+﻿@model Erp.Models.Complaint
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Create a Complaint </h5>
+            </div>
+        </div>
+        @if (TempData.ContainsKey("Error"))
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["Error"]
+            </div>
+        }
+        <form asp-action="Create">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" placeholder="Enter the Subject..." />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control ckeditor"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+
+                        @if (Context.User.IsInRole("Supervisor"))
+                        {
+                            <a asp-action="IndexSup">Back to List</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Index">Back to List</a>
+                        }
+
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="reset" value="Clear" class="btn btn-glow-dark btn-secondary  mr-3" />
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,214 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+<div class="container">
+    <div class="">
+
+        @if (Context.User.IsInRole("TeamLeader"))
+        {
+            <a asp-action="IndexTeam"><i class="fas fa-arrow-left"></i></a>
+        }
+        else if (Context.User.IsInRole("Supervisor"))
+        {
+            <a asp-action="IndexSup"><i class="fas fa-arrow-left"></i></a>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1">Basic Detail</h5>
+                </div>
+                <div class="card-body mx-auto">
+
+                    @if (Model.User.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" class="avatar" src="data:image/*;base64,@(Convert.ToBase64String(Model.User.ProfilePicture))" style="width: 100px; height: 90px; ">
+                    }
+                    else
+                    {
+                        <img id="profilePicture" class="avatar" src="~/assets/images/user/avatar-1.jpg"> 
+                    }
+
+
+                </div>
+
+                <div class=" card-block task-details p-0">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Employee:</td>
+                                <td class="text-right">
+
+                                    @Model.FirstName  @Model.LastName
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="far fa-id-card  fa-fw"></i> Id:</td>
+                                <td class="text-right">  @Model.EmployeeCode</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-genderless fa-fw"></i> Sex:</td>
+                                @if (Model.Sex == "Male")
+                                {
+                                    <td class="text-right"><i class="fas fa-male fa-fw fa-1x" style="color: cadetblue;"></i> @Model.Sex</td>
+                                }
+                                else
+                                {
+                                    <td class="text-right"><i class="fas fa-female fa-fw fa-1x" style="color: yellowgreen;"></i> @Model.Sex</td>
+                                }
+
+                            </tr>
+                            <tr>
+                                <td><i class="far fa-calendar-alt m-r-5  fa-fw"></i> Date Of Birth:</td>
+                                <td class="text-right">  @Model.DateOfBirth.ToString("dd MMM, yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fab fa-yandex-international  fa-fw"></i> Nationality:</td>
+                                <td class="text-right">@Model.Nationality</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-question  fa-fw"></i> Status:</td>
+                                <td class="text-right">
+                                    @if (Model.Status == true)
+                                    {
+                                    <span class="badge badge-info p-1">Currently Working </span>
+                                    }
+                                    else if (Model.Status == false)
+                                    {
+                                        <span class="badge badge-warning">Not working</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-warning">Pending </span>
+                                    }
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="font-weight-bolder p-1">Employee Detail </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ">
+
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><i class="fab fa-dropbox fa-fw"></i> PoBox:</td>
+                                    <td class="text-right">
+
+                                        @Model.POBox
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-fax fa-fw"></i> Fax:</td>
+                                    <td class="text-right">
+
+                                        @Model.Fax
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Address:</td>
+                                    <td class="text-right">  @Model.Region, @Model.City, @Model.Country</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Address:</td>
+                                    <td class="text-right">  @Model.Woreda, @Model.Subcity</td>
+                                </tr>
+
+                                <tr>
+                                    <td><i class="fas fa-calendar-check fa-fw"></i> Approved:</td>
+                                    <td class="text-right">
+                                        @if (Model.Approve == true)
+                                        {
+                                            <span class="badge badge-success">Approved</span>
+                                        }
+                                        else if (Model.Approve == false)
+                                        {
+                                            <span class="badge badge-danger">Rejected</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Pending </span>
+                                        }
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+               
+                <div class="card-body">
+                    <div class="table-responsive ">
+
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <td><i class="fas fa-adjust m-r-5"></i>Division:</td>
+                                    <td class="text-right">
+
+                                        @Model.Division.Name
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-building fa-fw"></i> Department:</td>
+                                    <td class="text-right">  @Model.Department.Name </td>
+                                </tr>
+                                @* <tr>
+                                        <td><i class="fas fa-users fa-fw"></i> Team:</td>
+                                        <td class="text-right"> @Model.Team.Name</td>
+                                    </tr>*@
+                                <tr>
+                                    <td><i class="fas fa-map-marker fa-fw" style="color:red;"></i> Position:</td>
+                                    <td class="text-right">
+
+                                        @Model.Positions.Name
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="far fa-calendar-alt m-r-5"></i>Employment Type:</td>
+                                    <td class="text-right">@Model.Employment_Type.Name</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

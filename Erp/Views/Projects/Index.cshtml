@@ -1,0 +1,194 @@
+﻿@model PaginatedList<Erp.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container px-5">
+    <div class="card mt-5">
+        <div class="card-header">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">Project</h5>
+            </div>
+            <div>
+                @if (TempData.ContainsKey("Warning"))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["Warning"]
+                    </div>
+                }
+                @if (TempData.ContainsKey("Success"))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["Success"]
+                    </div>
+                }
+            </div>
+            <div class="card-tools">
+                <div class="row">
+                    @if (Context.User.IsInRole("Director"))
+                    {
+                        <div class="col-7">
+                            <a asp-action="Create" class="btn btn-glow-dark btn-dark ml-4"><i class="feather icon-plus"></i>Add</a>
+                        </div>
+                    }
+
+                    <div class="col-4">
+                        <form asp-controller="Assets" asp-action="Index">
+                            <div class="input-group input-group-md">
+
+                                <input type="search" class="form-control float-right" name="sup_name" placeholder="Search..." />
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" type="submit"> <i class="fa fa-search"></i> </button>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="col-1">
+                        <a asp-action="Index">See All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive px-5">
+                        <table class="table table-border table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Project Name
+                                    </th>
+
+                                    <th>
+                                        Project Budget
+                                    </th>
+                                    <th>
+                                        Project Start Date
+                                    </th>
+                                    <th>
+                                        Project Duration
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectBudget)
+                                    </td>
+                                    <td>
+                                        @item.ProjectStartDate.ToString("dd MMM, yyyy")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectDuration) months
+                                    </td>
+                                    <td>
+                                        @if (item.Status == true)
+                                        {
+                                            <span class="badge badge-success">Completed</span>
+                                        }
+                                        else if (item.Status == false)
+                                        {
+                                            <span class="badge badge-info-border">Not started</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">In progress </span>
+                                        }
+                                    </td>
+
+
+                                    <td>
+                                        @if (Context.User.IsInRole("Director") & item.Status == false)
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.Id">
+                                                <i class="fa fa-edit text-green fa-fw"></i>
+                                            </a>
+
+                                            <a onclick="deleteConf(@item.Id)">
+                                                <i class="fa fa-trash-alt text-red fa-fw"></i>
+                                            </a>
+                                        }
+                                            <a asp-action="Details" asp-route-id="@item.Id">
+                                                <i class="fa fa-angle-double-right fa-fw"></i>
+                                            </a>
+                                        </td>
+
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+                <div class="card-footer">
+                    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)">
+
+                        <i class="fade fa-arrow @prevDisabled">  </i>Previous
+                    </a>
+
+                    <a class="btn btn-outline-secondary" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)">
+
+                        <i class="fade fa-arrow @nextDisabled">  </i>Next
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-right p-4">
+            <form asp-controller="Projects" asp-action="ExportToExcel" method="post">
+                <button type="submit" class="btn btn-glow-dark btn-dark"><i class="feather icon-download"></i>Download</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalCenterTitle">Assets</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5> Are you sure you want to delete?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glow-dark btn-secondary" data-dismiss="modal">Close</button>
+                <form asp-action="Delete">
+                    <input type="hidden" data-val="true" data-val-required="The DepartmentId field is required." id="DepartmentIdDelete" name="Id" value="">
+                    <button type="submit" class="btn btn-glow-dark btn-danger">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function deleteConf(id) {
+            $('#DepartmentIdDelete').val(id);
+            $("#exampleModalCenter").modal()
+        }
+    </script>
+}

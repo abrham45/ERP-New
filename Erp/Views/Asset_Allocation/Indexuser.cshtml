@@ -1,0 +1,94 @@
+﻿@model PaginatedList<Erp.Models.Asset_Allocation>
+
+@{
+    ViewData["Title"] = "Indexuser";
+}
+
+<div class="container px-5">
+    <div class="card mt-5">
+        <div class="card-header">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">My Assets</h5>
+            </div>
+           
+        </div>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive px-5">
+                        <table class="table table-border table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Asset Name </th>
+                                    <th>Asset Factory Number </th>
+                                    <th>Asset Serial Number </th>
+                                    <th>Description</th>
+                                    <th style="width: 10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Asset.Asset_Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Asset.factory_number)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Asset.serial_number)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+
+                                            <a asp-action="Details" asp-route-id="@item.Id">
+                                                <i class="fa fa-angle-double-right fa-fw"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+
+                <div class="card-footer">
+
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       class="btn btn-outline-secondary @prevDisabled">
+                        Previous
+                    </a>
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       class="btn btn-outline-secondary @nextDisabled">
+                        Next
+                    </a>
+                </div>
+            </div>
+
+</div>
+@*<div class="text-right p-4">
+    <form asp-controller="Asset_Allocation" asp-action="ExportToExcel" method="post">
+        <button type="submit" class="btn btn-glow-dark btn-dark"><i class="feather icon-download"></i>Download</button>
+    </form>
+
+</div>*@
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

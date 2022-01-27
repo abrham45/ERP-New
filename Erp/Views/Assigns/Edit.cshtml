@@ -1,0 +1,109 @@
+﻿@model Erp.Models.Tasks
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card">
+            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+                Project Task
+            </h3>
+            <h5 class="table-add float-right m-2"><a asp-action="Index" class="text-success "><i class="fas fa-arrow-left fa-1x"></i></a></h5>
+            <div class="card-body">
+
+                @if (TempData.ContainsKey("Success"))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                @if (TempData.ContainsKey("Warning"))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["Warning"]
+                    </div>
+                }
+                <div id="table" class="table-editable">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <table class="table table-bordered table-responsive-md table-striped text-center" id="demoA">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Tasks Name</th>
+                                    <th class="text-center">Duration</th>
+                                    <th class="text-center">Description</th>
+                                    <th class="text-center">Task Cost</th>
+                                    <th class="text-center">Task Progress</th>
+                                    <th class="text-center">Percent(%) Coverage</th>
+                                    <th class="text-center">Project</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <tr class="task-content">
+
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type="text" asp-for="TaskName" class="form-control" disabled/>
+                                        <span asp-validation-for="TaskName" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type="number" asp-for="Duration" class="form-control" disabled/>
+                                        <span asp-validation-for="Duration" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type="text" asp-for="Description" class="form-control" disabled/>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type='number' placeholder='0.00' asp-for="TaskCost" class="form-control" disabled/>
+                                        <span asp-validation-for="TaskCost" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type='number' placeholder='0.00' asp-for="TaskProgress" class="form-control" disabled/>
+                                        <span asp-validation-for="TaskProgress" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <input type='number' placeholder='12%' asp-for="PercentCoverage" class="form-control" disabled/>
+                                        <span asp-validation-for="PercentCoverage" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId" disabled></select>
+                                        <span asp-validation-for="ProjectId" class="text-danger"></span>
+                                    </td>
+                                    <td class="pt-3-half" contenteditable="true">
+                                        <select asp-for="Status" class="form-control">
+                                            <option value="null">Not Started</option>
+                                            <option value="false">In Progress</option>
+                                            <option value="true">Completed</option>
+                                        </select>
+                                        <span asp-validation-for="Status" class="text-danger"></span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Editable table -->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+}

@@ -1,0 +1,70 @@
+﻿@model Erp.Models.AttendanceExcuses
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Attendance Excuses  </h5>
+            </div>
+        </div>
+
+        <form asp-action="Create">
+          
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-0 m-0">
+
+
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="ExcuseName">Excuse Name</label>
+                            <input asp-for="ExcuseName" class="form-control" placeholder=" Enter Excuse Name .." required />
+                            <span asp-validation-for="ExcuseName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Description">Description</label>
+                            <input asp-for="Description" class="form-control" placeholder=" Enter Description...." />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                @*    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Cause">Cause</label>
+                            <input asp-for="Cause" class="form-control" placeholder=" Enter Description...." />
+                            <span asp-validation-for="Cause" class="text-danger"></span>
+                        </div>
+                    </div>*@
+
+                </div>
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

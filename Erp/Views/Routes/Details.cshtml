@@ -1,0 +1,45 @@
+﻿@model Erp.Models.Route
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card card-info p-2">
+        <div class="card-header">
+            Route Detail
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.StartPoint)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.StartPoint)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Destination)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Destination)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Distance)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Distance) km
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Expenses)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Expenses) ETB
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

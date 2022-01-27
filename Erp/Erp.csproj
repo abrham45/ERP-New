@@ -1,0 +1,159 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Erp-97B3D968-3DA7-460F-B45A-349197D8085A</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Shared\**" />
+    <Compile Remove="Permission\**" />
+    <Compile Remove="Views\AnnualLossExpectancies\Asset_Allocation\**" />
+    <Compile Remove="Views\Attendances\**" />
+    <Compile Remove="Views\Dashboard\**" />
+    <Compile Remove="Views\Permission\**" />
+    <Compile Remove="Views\Terminations\NewFolder\**" />
+    <Compile Remove="wwwroot\asset\**" />
+    <Compile Remove="wwwroot\lib\bootstrap\dist\css\NewFolder\**" />
+    <Content Remove="Areas\Identity\Pages\Shared\**" />
+    <Content Remove="Permission\**" />
+    <Content Remove="Views\AnnualLossExpectancies\Asset_Allocation\**" />
+    <Content Remove="Views\Attendances\**" />
+    <Content Remove="Views\Dashboard\**" />
+    <Content Remove="Views\Permission\**" />
+    <Content Remove="Views\Terminations\NewFolder\**" />
+    <Content Remove="wwwroot\asset\**" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\NewFolder\**" />
+    <EmbeddedResource Remove="Areas\Identity\Pages\Shared\**" />
+    <EmbeddedResource Remove="Permission\**" />
+    <EmbeddedResource Remove="Views\AnnualLossExpectancies\Asset_Allocation\**" />
+    <EmbeddedResource Remove="Views\Attendances\**" />
+    <EmbeddedResource Remove="Views\Dashboard\**" />
+    <EmbeddedResource Remove="Views\Permission\**" />
+    <EmbeddedResource Remove="Views\Terminations\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\asset\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\css\NewFolder\**" />
+    <None Remove="Areas\Identity\Pages\Shared\**" />
+    <None Remove="Permission\**" />
+    <None Remove="Views\AnnualLossExpectancies\Asset_Allocation\**" />
+    <None Remove="Views\Attendances\**" />
+    <None Remove="Views\Dashboard\**" />
+    <None Remove="Views\Permission\**" />
+    <None Remove="Views\Terminations\NewFolder\**" />
+    <None Remove="wwwroot\asset\**" />
+    <None Remove="wwwroot\lib\bootstrap\dist\css\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AttendancesController.cs" />
+    <Compile Remove="Controllers\AttendanceSupExcuses.cs" />
+    <Compile Remove="Controllers\DashboardController.cs" />
+    <Compile Remove="Controllers\PermissionController.cs" />
+    <Compile Remove="Controllers\permissionssController.cs" />
+    <Compile Remove="Enums\EmploymentStatus.cs" />
+    <Compile Remove="Models\Attendance.cs" />
+    <Compile Remove="Models\EmailConfiguration.cs" />
+    <Compile Remove="Models\EmployeeBonusController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Account\Manage\layout1.cshtml" />
+    <Content Remove="Views\Drivers\Delete.cshtml" />
+    <Content Remove="Views\Employees\CreateEmployee.cshtml" />
+    <Content Remove="Views\Projects\IndexT.cshtml" />
+    <Content Remove="Views\Shared\layout.cshtml" />
+    <Content Remove="Views\Shared\loglayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Projects\Create.cshtml" />
+    <None Include="Views\Projects\Delete.cshtml" />
+    <None Include="Views\Projects\Details.cshtml" />
+    <None Include="Views\Projects\Edit.cshtml" />
+    <None Include="Views\Projects\IndexT.cshtml" />
+    <None Include="Views\Projects\Index.cshtml" />
+    <None Include="Views\ProjectTypes\Create.cshtml" />
+    <None Include="Views\ProjectTypes\Delete.cshtml" />
+    <None Include="Views\ProjectTypes\Details.cshtml" />
+    <None Include="Views\ProjectTypes\Edit.cshtml" />
+    <None Include="Views\ProjectTypes\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Data" Version="5.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="3.0.50813.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Mvc" Version="3.2.0" />
+    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\AttendanceExcuses\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\AttendanceSupExcuses\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Attendance\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DMaintainances\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DMaintainances\Details.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DMaintainances\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\DMaintainances\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\EmployeeAllocations\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\EmployeeAllocations\Details.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\EmployeeAllocations\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\EmployeeAllocations\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\NewFolder\" />
+  </ItemGroup>
+
+</Project>

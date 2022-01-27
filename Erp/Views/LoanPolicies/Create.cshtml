@@ -1,0 +1,54 @@
+﻿@model Erp.Models.LoanPolicy
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-">
+                   Register Loan Policy
+                </h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="pl-3 mx-auto">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Loan Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter Loan Name..." />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Type" class="control-label"></label>
+                        <input asp-for="Type" class="form-control" placeholder="Enter Loan Type..." />
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Max Amount</label>
+                        <input asp-for="MaxAmount" class="form-control" placeholder="Enter Loan Max Amount..." />
+                        <span asp-validation-for="MaxAmount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }

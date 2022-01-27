@@ -1,0 +1,1279 @@
+﻿
+<nav class="pcoded-navbar icon-colored">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-trending-up"></i>
+                </div>
+                <span class="b-title">ERP</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            @if (Context.User.IsInRole("SuperAdmin"))
+            {
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Super Admin"</label>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Role" asp-action="Index"><span class="pcoded-micon"><i class="feather icon-user-plus"></i></span><span class="pcoded-mtext">Roles</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" as asp-area="" asp-controller="UserRoles" asp-action="Index"><span class="pcoded-micon"><i class="feather icon-unlock"></i></span><span class="pcoded-mtext">Assign Role</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Users" asp-action="AllUsers"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">UserList</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                    </li>
+                </ul>
+            }
+
+            else if (Context.User.IsInRole("HR-Admin"))
+            {
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Human Resource</label>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AttendanceExcuses"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances Excuses</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexDir" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Employees</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave</span></a>
+                        <ul class="pcoded-submenu">
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Leave Types</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"></span><span class="pcoded-mtext">Leave Request</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                        <ul class="pcoded-submenu">
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-list"></i></span><span class="pcoded-mtext">Offices</span></a>
+                        <ul class="pcoded-submenu">
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Divisions"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Divisions</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="Departments"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Departments</span></a>
+                            </li>
+
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="Teams"><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Teams</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Positions"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Positions</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                <a class="nav-link" asp-action="Index" asp-controller="Employment_Type"><span class="pcoded-micon"><i class="feather icon-user-check"></i></span><span class="pcoded-mtext">Employee Types</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            }
+            else if (Context.User.IsInRole("Supervisor"))
+            {
+
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Supervisor</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexSup" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Employees</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Fleet </span></a>
+                <ul class="pcoded-submenu">
+                  
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicles">
+                            <span class="pcoded-micon"></span><span class="pcoded-mtext">
+                                vechicles Request
+                            </span>
+                        </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicleChanges"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Changes</span> </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexUser" asp-controller="FieldWorks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Field Works</span> </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexUser" asp-controller="Maintenances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Maintenance</span> </a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexSup" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Daily Attendance</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AttendanceSupExcuses"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances Excuses</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Reports</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item  ">
+                        <a class="nav-link " asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Weekly Report</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link " asp-action="IndexSup" asp-controller="WeeelyReports"><span class="pcoded-micon"></span><span class="pcoded-mtext">Weekly Report</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                <ul class="pcoded-submenu">
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">My Complaints</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexSup" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+            }
+            else if (Context.User.IsInRole("TeamLeader"))
+            {
+
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Team Leader</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexT" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Employees</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexTeam" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Daily Attendance</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexTeam" asp-controller="AttendanceSupExcuses"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances Excuses</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Fleet </span></a>
+                <ul class="pcoded-submenu">
+               
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicles">
+                            <span class="pcoded-micon"></span><span class="pcoded-mtext">
+                                vechicles Request
+                            </span>
+                        </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicleChanges"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Changes</span> </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexUser" asp-controller="FieldWorks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Field Works</span> </a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexUser" asp-controller="Maintenances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Maintenance</span> </a>
+                    </li>
+                </ul>
+            </li>
+           
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Reports</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexT" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weeely Report</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">My Weeely Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                <ul class="pcoded-submenu">
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">My Complaints</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexTeam" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Projects</span></a>
+                <ul class="pcoded-submenu">
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexT" asp-controller="Projects"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Projects</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexT" asp-controller="Tasks"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Tasks</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+            }
+            else if (Context.User.IsInRole("Basic"))
+            {
+
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Navigation</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+           
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"></span><span class="pcoded-mtext">Attendances</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexBasicI" asp-controller="Attendance"><span class="pcoded-micon"></span><span class="pcoded-mtext">Incomplete Attendances</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexBasic" asp-controller="AttendanceSupExcuses"><span class="pcoded-micon"></span><span class="pcoded-mtext">Attendance Excuse</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Report</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexEmp" asp-controller="Tasks"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Tasks</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Fleet</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexEmp" asp-controller="ServiceAllocations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Service Allocations</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicles"><span class="pcoded-micon"></span><span class="pcoded-mtext">Service Request</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="RequestVehicleChanges"><span class="pcoded-micon"></span><span class="pcoded-mtext"> Change service</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="FieldWorks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Field Works</span></a>
+                    </li>
+
+                </ul>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+            }
+            else if (Context.User.IsInRole("Director"))
+            {
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Director</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">HRMs</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item  ">
+                            <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                        </li>
+
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexDir" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Employees</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                            <ul class="pcoded-submenu">
+
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">My Complaints</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="IndexDir" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Requests</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">My Leave Request</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="IndexDir" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                    <a class="nav-link" asp-action="Index" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                </li>
+
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-credit-card"></i></span><span class="pcoded-mtext">Procurmnet & Inventory</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Management</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Assets"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="IndexDir" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Requests </span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Depersations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Annule Depersations </span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fa-solid fa-books"></i></span><span class="pcoded-mtext">Auction </span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="AuctionOwners"><span class="pcoded-micon"></span><span class="pcoded-mtext">Auctions</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="AuctionMembers"><span class="pcoded-micon"></span><span class="pcoded-mtext">Auction Applicants </span></a>
+                                </li>
+                            </ul>
+                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-target"></i></span><span class="pcoded-mtext">Planning & Budgeting</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Plans"><span class="pcoded-micon"></span><span class="pcoded-mtext">Plans</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="DirectorPlans"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Plans </span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Budgets"><span class="pcoded-micon"></span><span class="pcoded-mtext">Budgets </span></a>
+                        </li>
+                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">Risk Management</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexRisk" asp-controller="DashboardPm"><span class="pcoded-micon"></span><span class="pcoded-mtext">Dashbord</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="RiskTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Risk Type</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Risks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Risk</span></a>
+                        </li>
+
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AssetTypeRisks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Type Risks</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AssetRisks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Risks</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AnnualLossExpectancies"><span class="pcoded-micon"></span><span class="pcoded-mtext">Annual Loss Expectancies</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-activity"></i></span><span class="pcoded-mtext">Finance</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Requests</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="IndexDir" asp-controller="LoanRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Loan Requests</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Loan Request</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Project Management</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="DashboardPm"><span class="pcoded-micon"></span><span class="pcoded-mtext">Dashbord</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="ProjectTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Project Types</span></a>
+                        </li>
+
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Projects"><span class="pcoded-micon"></span><span class="pcoded-mtext">Projects</span></a>
+                        </li>
+                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">Genral Services</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fa-solid fa-books"></i></span><span class="pcoded-mtext">Fleet Management </span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="vechicles"><span class="pcoded-micon"><i class="fa-thin fa-cars"></i></span><span class="pcoded-mtext">vechicles</span></a>
+                                </li>
+
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="RequestVehicles">
+                                        <span class="pcoded-micon"></span><span class="pcoded-mtext">
+                                            vechicles Request
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="RequestVehicleChanges"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Changes</span> </a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="IndexUser" asp-controller="FieldWorks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Field Works</span> </a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="IndexUser" asp-controller="Maintenances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Maintenance</span> </a>
+                                </li>
+                            </ul>
+
+                    </ul>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-check"></i></span><span class="pcoded-mtext">Performance Management</span></a>
+                    <ul class="pcoded-submenu">
+                    </ul>
+
+            </ul>
+            }
+            else if (Context.User.IsInRole("Inventory"))
+            {
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Inventory</label>
+            </li>
+            <li class="nav-item pcoded-menu-caption">
+                <label>Navigation</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action=" IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Manage Inventory</span></a>
+                <ul class="pcoded-submenu">
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Allocation</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Depersations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Annule Depersations </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+        </ul>
+            }
+            else if (Context.User.IsInRole("StoreManager"))
+            {
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Store Manager</label>
+            </li>
+            <li class="nav-item pcoded-menu-caption">
+                <label>Navigation</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fab fa-first-order-alt"></i></span><span class="pcoded-mtext">Manage Order</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexUser" asp-controller="OrderAssets"><span class="pcoded-micon"></span><span class="pcoded-mtext">Order Asset</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Manage Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Assets"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_type"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Type</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="FaultyAssets"><span class="pcoded-micon"></span><span class="pcoded-mtext">Faulty Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="FaultyAssetTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Faulty Assets Type</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+        </ul>
+            }
+            else if (Context.User.IsInRole("PropertyManager"))
+            {
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Property Manager</label>
+            </li>
+            <li class="nav-item pcoded-menu-caption">
+                <label>Navigation</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Manage Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Suppliers"><span class="pcoded-micon"></span><span class="pcoded-mtext">Supplier</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Depersations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Annule Depersations </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+        </ul>
+            }
+            else if (Context.User.IsInRole("Risk-Team"))
+            {
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Risk-Team</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">HRMs</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item  ">
+                        <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experience Request</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="IndexDir" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Employees</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                        <ul class="pcoded-submenu">
+
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">My Complaints</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="IndexDir" asp-controller="Complaints"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Requests</span></a>
+                        <ul class="pcoded-submenu">
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">My Leave Request</span></a>
+                            </li>
+                            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                <a class="nav-link" asp-action="IndexDir" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">Risk</span></a>
+                <ul class="pcoded-submenu">
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="RiskTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Risk Type</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Risks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Risk</span></a>
+                    </li>
+
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetTypeRisks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Asset Type Risks</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+            }
+            else if (Context.User.IsInRole("ProjectManager"))
+            {
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Navigation</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Employees" ? "active" : "")">
+                    <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "LeaveRequest" ? "active" : "")">
+                    <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Experiences" ? "active" : "")">
+                    <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Complaints" ? "active" : "")">
+                    <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Resignations" ? "active" : "")">
+                    <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "DepartmentChanges" ? "active" : "")">
+                    <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Attendances" ? "active" : "")">
+                    <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "WeeelyReports" ? "active" : "")">
+                    <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Report</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-archive"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "AssetRequests" ? "active" : "")">
+                            <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Asset_Exchange" ? "active" : "")">
+                            <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Asset_Allocation" ? "active" : "")">
+                            <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fa fa-briefcase" aria-hidden="true"></i></span><span class="pcoded-mtext">Project Managment</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "DashboardPm" ? "active" : "")">
+                            <a class="nav-link" asp-action="Index" asp-controller="DashboardPm"><span class="pcoded-micon"></span><span class="pcoded-mtext">Dashboard</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Tasks" ? "active" : "")">
+                            <a class="nav-link" asp-action="Index" asp-controller="Tasks"><span class="pcoded-micon"></span><span class="pcoded-mtext">Tasks</span></a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+            }
+
+            else if (Context.User.IsInRole("FinanceTeam"))
+            {
+
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Finance Team</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">HRMs</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Report</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-activity"></i></span><span class="pcoded-mtext">Finance</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Salaries"><span class="pcoded-micon"></span><span class="pcoded-mtext">Gross Salary</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Taxes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Tax</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="IssueSaleries"><span class="pcoded-micon"></span><span class="pcoded-mtext">Net Salary </span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-archive"></i></span><span class="pcoded-mtext">Policy</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="BonusPolicies"><span class="pcoded-micon"></span><span class="pcoded-mtext">Bonus Policy</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="AllowancePolicies1"><span class="pcoded-micon"></span><span class="pcoded-mtext">Allowance Policy</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="LoanPolicies"><span class="pcoded-micon"></span><span class="pcoded-mtext">Loan Policy</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="DeductionPolicies"><span class="pcoded-micon"></span><span class="pcoded-mtext">Deduction Policy</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-cash-register"></i></span><span class="pcoded-mtext">Employee Policy</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="EmployeeBonus"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employee Bonus</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="EmployeeAllowances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employee Allowance </span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="EmployeeDeductions"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employee Deduction</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="IndexFinance" asp-controller="LoanRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employee Loan </span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            }
+            else if (Context.User.IsInRole("AuctionTeam"))
+            {
+
+        <ul class="nav pcoded-inner-navbar">
+            <li class="nav-item pcoded-menu-caption">
+                <label>Navigation</label>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Report</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                <a class="nav-link" asp-action="IndexEmp" asp-controller="Tasks"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Tasks</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-archive"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+            <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Auction</span></a>
+                <ul class="pcoded-submenu">
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AuctionOwners"><span class="pcoded-micon"></span><span class="pcoded-mtext">Auctions</span></a>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                        <a class="nav-link" asp-action="Index" asp-controller="AuctionMembers"><span class="pcoded-micon"></span><span class="pcoded-mtext">Auction Applicants </span></a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+
+            }
+            else if (Context.User.IsInRole("FleetTeam"))
+            {
+
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Fleet-Team</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">HRMs</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Create" asp-controller="Employees"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="IndexBasic" asp-controller="DepartmentChanges"><span class="pcoded-micon"><i class="feather icon-shuffle"></i></span><span class="pcoded-mtext">Department Transfer</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+
+                            <a class="nav-link" asp-action="Index" asp-controller="LoanRequests"><span class="pcoded-micon"><i class="fas fa-hand-holding-usd"></i></span><span class="pcoded-mtext">Loan Request</span></a>
+
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="WeeelyReports"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Weekly Report</span></a>
+                        </li>
+                    </ul>
+                </li>
+                   <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                <a class="nav-link" asp-action="IndexUser" asp-controller="Plans"><span class="pcoded-micon"><i class="fas fa-columns"></i></span><span class="pcoded-mtext">Plans</span></a>
+            </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Create" asp-controller="Attendance"><span class="pcoded-micon"><i class="feather icon-clock"></i></span><span class="pcoded-mtext">Attendances</span></a>
+                </li>
+
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="IndexEmp" asp-controller="Tasks"><span class="pcoded-micon"><i class="feather icon-file"></i></span><span class="pcoded-mtext">Tasks</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-car"></i></span><span class="pcoded-mtext">Fleet Managmnet</span></a>
+                    <ul class="pcoded-submenu">
+                        @* <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Drivers"><span class="pcoded-micon"></span><span class="pcoded-mtext">Driver</span></a>
+                    </li>*@
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu">
+                            <a href="#!" class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicles</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="vechicles"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="vechiclesTypes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Vehicle Types</span></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Routes"><span class="pcoded-micon"></span><span class="pcoded-mtext">Routes </span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Drivers"><span class="pcoded-micon"></span><span class="pcoded-mtext">Drivers </span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="IndexFeelt" asp-controller="RequestVehicles"><span class="pcoded-micon"></span><span class="pcoded-mtext">Requested Vehicle </span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="DriverAllocations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Driver Allocation</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="EmployeeAllocations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employee Allocation</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="ServiceAllocations"><span class="pcoded-micon"></span><span class="pcoded-mtext">Service Allocation</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link"><span class="pcoded-micon"></span><span class="pcoded-mtext"> Vehicle Maintainance</span></a>
+                            <ul class="pcoded-submenu">
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Maintenances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Drivers</span></a>
+                                </li>
+                                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Maintenances"><span class="pcoded-micon"></span><span class="pcoded-mtext">Employees</span></a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                    </ul>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item pcoded-hasmenu ">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="fas fa-box"></i></span><span class="pcoded-mtext">Inventory</span></a>
+                    <ul class="pcoded-submenu">
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="AssetRequests"><span class="pcoded-micon"></span><span class="pcoded-mtext">Request Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Index" asp-controller="Asset_Exchange"><span class="pcoded-micon"><i class="feather  corner-down-right"></i></span><span class="pcoded-mtext">Exchange my Assets</span></a>
+                        </li>
+                        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                            <a class="nav-link" asp-action="Indexuser" asp-controller="Asset_Allocation"><span class="pcoded-micon"></span><span class="pcoded-mtext">My Assets </span></a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            }
+            else if (Context.User.IsInRole("Driver"))
+            {
+
+            <ul class="nav pcoded-inner-navbar">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Driver Navigation</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Create" asp-controller="Drivers"><span class="pcoded-micon"><i class="feather icon-book"></i></span><span class="pcoded-mtext">My Detail</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="Index" asp-controller="LeaveRequest"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Leave Request</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="IndexBasic" asp-controller="Experiences"><span class="pcoded-micon"><i class="feather icon-plus-circle"></i></span><span class="pcoded-mtext">Experiences</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+                    <a class="nav-link" asp-action="IndexDriver" asp-controller="Complaints"><span class="pcoded-micon"><i class="fas fa-thumbs-down"></i></span><span class="pcoded-mtext">Complaints</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                    <a class="nav-link" asp-action="Index" asp-controller="Resignations"><span class="pcoded-micon"><i class="feather icon-user-minus"></i></span><span class="pcoded-mtext">Resignations</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                    <a class="nav-link" asp-action="IndexUser" asp-controller="DMaintainances"><span class="pcoded-micon"><i class="fas fa-wrench"></i></span><span class="pcoded-mtext">Maintainances</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                    <a class="nav-link" asp-action="IndexUser" asp-controller="DriverAllocations"><span class="pcoded-micon"><i class="fas fa-road"></i></span><span class="pcoded-mtext">Vehicle & Route</span></a>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item ">
+                    <a class="nav-link" asp-action="IndexUser" asp-controller="ServiceAllocations"><span class="pcoded-micon"><i class="fas fa-taxi"></i></span><span class="pcoded-mtext">Service Employees</span></a>
+                </li>
+            </ul>
+
+            }
+
+
+</div>
+    </div>
+</nav>

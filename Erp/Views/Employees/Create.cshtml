@@ -1,0 +1,382 @@
+﻿@model Erp.Models.Employee
+
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container px-5">
+
+    <div class="card">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Insert Employee Information</h5>
+            </div>
+            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Basic info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Address</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Qualification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-four-detail-tab" data-toggle="pill" href="#custom-tabs-four-detail" role="tab" aria-controls="custom-tabs-four-detail" aria-selected="false">Employee Detail</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-four-social-tab" data-toggle="pill" href="#custom-tabs-four-social" role="tab" aria-controls="custom-tabs-four-social" aria-selected="false">Socials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-four-emergency-tab" data-toggle="pill" href="#custom-tabs-four-emergency" role="tab" aria-controls="custom-tabs-four-emergency" aria-selected="false">Emergency Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="CreateEmployee">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="tab-content" id="custom-tabs-four-tabContent">
+                    <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+
+                        <div class="row p-0 m-0">
+                            <div class="col-6 p-0">
+                                <div class="form-group  p-3">
+                                    <label asp-for="FirstName" class="control-label">Frist Name *</label>
+                                    <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter your first name" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group  p-3">
+                                    <label asp-for="LastName" class="control-label">Last Name *</label>
+                                    <input type="text" asp-for="LastName" class="form-control" placeholder="Enter your last name" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-0 m-0">
+
+                            <div class="col-6">
+                                <div class="form-group p-3">
+                                    <label asp-for="DateOfBirth">Date Of Birth *</label>
+                                    <input type="date" asp-for="DateOfBirth" class="form-control" required />
+                                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-6">
+                                <div class="form-group p-3">
+                                    <label asp-for="Nationality" class="control-label">Nationality *</label>
+                                    <input type="text" asp-for="Nationality" class="form-control" placeholder="Nationality..." />
+                                    <span asp-validation-for="Nationality" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group p-3">
+                                    <label asp-for="Sex" class="control-label">Sex *</label>
+                                    <div class="form-check p-0">
+                                        <input id="sex" asp-for="Sex" type="radio" value="Female" />
+                                        <label class="form-check-label">Female</label>
+                                        <span class="p-5"></span>
+                                        <input id="sex" asp-for="Sex" type="radio" value="Male" />
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <span asp-validation-for="Sex" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group p-3">
+                                    <label asp-for="AccountNumber" class="control-label">Bank Account Number *</label>
+                                    <input type="number" asp-for="AccountNumber" class="form-control" placeholder="Account Number..." />
+                                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-0 m-0">
+                            <div class="col-6">
+                                <div class="form-group p-0">
+                                    <label asp-for="AboutMe" class="control-label">About Your self</label>
+                                    <textarea type="text" asp-for="AboutMe" class="form-control" placeholder="About Your self..."></textarea>
+                                    <span asp-validation-for="AboutMe" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group p-0">
+                                    <label asp-for="AreaOfExpertise" class="control-label">Area Of Expertise</label>
+                                    <textarea type="text" asp-for="AreaOfExpertise" class="form-control" placeholder="Area Of Expertise..."></textarea>
+                                    <span asp-validation-for="AreaOfExpertise" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                        <div class="row p-0 m-0 mt-3">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="Mobile" class="control-label">Phone Number *</label>
+                                    <input type="text" asp-for="Mobile" class="form-control" placeholder="Enter your phone number" />
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="HomeTelephone" class="control-label">Home Phone Number</label>
+                                    <input type="text" asp-for="HomeTelephone" class="form-control" placeholder="Enter your home Phone number" />
+                                    <span asp-validation-for="HomeTelephone" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group  p-3">
+                            <label asp-for="WorkTelephone" class="control-label">Work Phone Number</label>
+                            <input type="text" asp-for="WorkTelephone" class="form-control" placeholder="Enter your work Phone number" />
+                            <span asp-validation-for="WorkTelephone" class="text-danger"></span>
+                        </div>
+                        <div class="row p-0 m-0">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="Fax" class="control-label">Fax</label>
+                                    <input type="number" asp-for="Fax" class="form-control" placeholder="Enter your fax number" />
+                                    <span asp-validation-for="Fax" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="POBox" class="control-label">P.O.BOX</label>
+                                    <input type="number" asp-for="POBox" class="form-control" placeholder="Enter your p.o.box" />
+                                    <span asp-validation-for="POBox" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-0 m-0">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="Country" class="control-label">Country  *</label>
+                                    <input type="text" asp-for="Country" class="form-control" placeholder="Enter your country" />
+                                    <span asp-validation-for="Country" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label asp-for="Region" class="control-label">Region *</label>
+                                    <input type="text" asp-for="Region" class="form-control" placeholder="Enter your region" />
+                                    <span asp-validation-for="Region" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-0 m-0">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="City" class="control-label">City *</label>
+                                    <input type="text" asp-for="City" class="form-control" placeholder="Enter your city" />
+                                    <span asp-validation-for="City" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="Subcity" class="control-label">Subcity</label>
+                                    <input type="text" asp-for="Subcity" class="form-control" placeholder="Enter your subcity" />
+                                    <span asp-validation-for="Subcity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label asp-for="Woreda" class="control-label">Woreda</label>
+                                    <input type="text" asp-for="Woreda" class="form-control" placeholder="Enter your woreda" />
+                                    <span asp-validation-for="Woreda" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                      
+                    </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+                            <div class="row m-0 p-0 mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="control-label">Field of study</label>
+                                            <input type="text" asp-for="Field" class="form-control" placeholder="Enter your Field of study.." />
+                                            <span asp-validation-for="Field" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Institution</label>
+                                        <input type="text" asp-for="Institution" class="form-control" placeholder="Enter the Institution.." />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>StartYear</label>
+                                        <input type="date" asp-for="QstartYear" class="form-control" placeholder="Enter Started Year.." />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>EndYear</label>
+                                        <input type="date" asp-for="QendYear" class="form-control" placeholder="Enter End Year.." />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Degree</label>
+                                        <select asp-for="QualificationType" class="form-control">
+                                            <option value="Certificate">Certificate </option>
+                                            <option value="BSC">BSC </option>
+                                            <option value="BA">BA </option>
+                                            <option value="MSC">MSC </option>
+                                            <option value="Phd">Phd </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-detail" role="tabpanel" aria-labelledby="custom-tabs-four-detail-tab">
+                            <div class="row m-0 p-0 mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="DivisionId" class="control-label">Select Division</label>
+                                        @Html.DropDownListFor(model => Model.DivisionId, (SelectList)ViewBag.Division_id, new { @class = "form-control" })
+                                        <span asp-validation-for="DivisionId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="DepartmentId" class="control-label">Select Department</label>
+                                        @Html.DropDownListFor(model => Model.DepartmentId, (SelectList)ViewBag.department_id, new { @class = "form-control" })
+                                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="TeamId" class="control-label">Select Team</label>
+                                        @Html.DropDownListFor(model => Model.TeamId, (SelectList)ViewBag.Team_id, new { @class = "form-control" })
+                                        <span asp-validation-for="TeamId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="PositionId" class="control-label">Select Position</label>
+                                        @Html.DropDownListFor(model => Model.PositionId, (SelectList)ViewBag.Position_id, new { @class = "form-control" })
+                                        <span asp-validation-for="PositionId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="Employment_typeId" class="control-label">Select Employment Type</label>
+                                        @Html.DropDownListFor(model => Model.Employment_typeId, (SelectList)ViewBag.Employment_id, new { @class = "form-control" })
+                                        <span asp-validation-for="Employment_typeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="EmployeeCode" class="control-label">Employee Id</label>
+                                        <input type="text" asp-for="EmployeeCode" class="form-control" placeholder="Employee Id..." />
+                                        <span asp-validation-for="EmployeeCode" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-social" role="tabpanel" aria-labelledby="custom-tabs-four-social-tab">
+                            <div class="row m-0 p-0 mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="control-label">Social Name</label>
+                                            <input type="text" asp-for="sName" class="form-control" placeholder="Enter the social name.." />
+                                             
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Url</label>
+                                        <input type="url" asp-for="sUrl" class="form-control" placeholder="Enter your social url.." />
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="tab-pane fade" id="custom-tabs-four-emergency" role="tabpanel" aria-labelledby="custom-tabs-four-emergency-tab">
+                            <div class="row m-0 p-0 mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="control-label">Emergency Contact Name</label>
+                                            <input type="text" asp-for="EName" class="form-control" placeholder="Enter Emergency Contact name.." />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Emergency Contact Address</label>
+                                        <input type="text" asp-for="EAddress" class="form-control" placeholder="Enter Emergency Contact Address.." />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Emergency Contact Phone Number</label>
+                                        <input type="text" asp-for="EPhoneNumber" class="form-control" placeholder="Enter Emergency Contact Phone Number.." />
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Relation with Emergency Contact</label>
+                                        <input type="text" asp-for="ERelation" class="form-control" placeholder="Relation with Emergency Contact.." />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white p-2">
+                                <div class="row p-0 m-0">
+                                    <div class="col align-self-start pl-3">
+                                    </div>
+                                    <div class="col-2  align-self-end  p-0">
+                                        <div class="form-group mb-0">
+
+                                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       @* <div class="card-footer bg-white p-2">
+                            <div class="row p-0 m-0">
+                                <div class="col align-self-start pl-3">
+                                </div>
+                                <div class="col-2  align-self-end  p-0">
+                                    <div class="form-group mb-0">
+                                       
+                                        <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    </div>
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

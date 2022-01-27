@@ -1,0 +1,456 @@
+﻿@model Attendances
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="card shadow-lg pb-4 pt-3" style="margin-right: 15em; margin-left: 15em;">
+
+    <div class="mt-3 mb-1 text-center">
+        <div class="text-center p-2 my-3 ">
+            @if (TempData.ContainsKey("Warning"))
+            {
+            <div class="alert alert-danger attendance" role="alert">
+                <p> @TempData["Warning"]</p>
+            </div>
+            }
+            @if (TempData.ContainsKey("Success"))
+            {
+                <div class="alert alert-success attendance" role="alert" style="font-size:20px;">
+
+                 
+                        <p><b> @TempData["Success"]</b>  </p>   <br /><br />
+                        @TempData["SuccessDate"]
+                  
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center mt-3 pt-3">
+        <form asp-action="SaveAttendance" id="SaveAttendanceForm">
+            @{
+                TimeSpan start = new TimeSpan(6, 20, 0); //12 : 20
+                TimeSpan end = new TimeSpan(6, 45, 0); //12 :45
+                TimeSpan now = DateTime.Now.TimeOfDay;
+
+                TimeSpan nstart = new TimeSpan(07, 30, 0);
+
+            }
+            @if (Model != null)
+            {
+                @if (Model.MorningCheckin == TimeSpan.Zero & now < end)
+                {
+                    @*<div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check In
+                                </h4>
+                                <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" />
+
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check In <i class="fas fa-check fa-fw"></i>  </button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+
+                    </div>*@
+
+                }
+                else if (Model.MorningCheckin != TimeSpan.Zero & Model.MorningCheckout == TimeSpan.Zero & now < end)
+                {
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check In
+                                </h4>
+                                @* <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />*@
+                                <label>    @Model.MorningCheckin </label>
+
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check Out
+                                </h4>
+                                <input name="EmployeeId" id="MorningCheckout" class="form-control code-input" placeholder="Enter your Id" />
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else if (Model.AfternoonCheckin == TimeSpan.Zero & now > nstart)
+                {
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check In
+                                </h4>
+                                @*  <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />
+                                *@ <label>    @Model.MorningCheckin </label>
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check In <i class="fas fa-check fa-fw"></i> </button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check Out
+                                </h4>
+                                @*        <input name="EmployeeId" id="MorningCheckout" class="form-control code-input" placeholder="Enter your Id" hidden />*@
+                                <label>@Model.MorningCheckout </label>
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Afternoon Check In
+                                </h4>
+                                <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" />
+
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check In <i class="fas fa-check fa-fw"></i> </button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                else if (Model.AfternoonCheckin != TimeSpan.Zero & Model.AfternoonCheckout == TimeSpan.Zero)
+                {
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check In
+                                </h4>
+                                <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />
+                                <label>@Model.MorningCheckin</label>
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check In <i class="fas fa-check fa-fw"></i> </button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Morning Check Out
+                                </h4>
+                                <input name="EmployeeId" id="MorningCheckout" class="form-control code-input" placeholder="Enter your Id" hidden />
+                                <label>@Model.MorningCheckout </label>
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Afternoon Check In
+                                </h4>
+                                <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />
+                                <label>@Model.AfternoonCheckin </label>
+                                <div class="btn-container mx-auto mt-5">
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check In <i class="fas fa-check fa-fw"></i> </button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <h4 class="mb-5 pb-2 text-center">
+                                    Afternoon Check Out
+                                </h4>
+
+                                <input name="EmployeeId" id="AfternoonCheckout" class="form-control code-input" placeholder="Enter your Id" />
+
+                                <div class="btn-container mx-auto mt-5">
+
+                                    <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                                </div>
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.AfternoonCheckin != TimeSpan.Zero & Model.AfternoonCheckout != TimeSpan.Zero)
+                {
+                    <div class="alert alert-success" role="alert" style="font-size:20px;">
+                        <b>Today's Attendance is Completed.</b>
+                    </div>
+                }
+
+            }
+            else if (now < end)
+            {
+                <div class="row">
+                    <div class="col-md-15 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center" style="display:none;">
+                                Morning Check In
+                            </h4>
+                            <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" />
+
+                            <div class="btn-container mx-auto mt-5">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check In <i class="fas fa-check fa-fw"></i> </button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center" style="display:none;">
+                                Morning Check Out
+                            </h4>
+                            <input name="EmployeeId" id="MorningCheckout" class="form-control code-input" placeholder="Enter your Id" hidden />
+                            <div class="btn-container mx-auto mt-5">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center" style="display:none;">
+                                Afternoon Check In
+                            </h4>
+                            <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />
+
+                            <div class="btn-container mx-auto mt-5">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check In <i class="fas fa-check fa-fw"></i> </button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center" style="display:none;">
+                                Afternoon Check Out
+                            </h4>
+
+                            <input name="EmployeeId" id="AfternoonCheckout" class="form-control code-input" placeholder="Enter your Id" hidden />
+
+                            <div class="btn-container mx-auto mt-5">
+
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block "hidden>Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+          @*  else if (Model.MorningCheckin != TimeSpan.Zero & Model.MorningCheckout != TimeSpan.Zero & Model.AfternoonCheckin != TimeSpan.Zero & Model.AfternoonCheckin != TimeSpan.Zero)
+            {
+                <div class="alert alert-success" role="alert" style="font-size:20px;">
+                    <b>Today's Attendance is Completed.</b>
+                </div>
+            }*@
+
+
+            else if (now > nstart)
+            {
+                <div class="row">
+                    @*<div class="col-md-15 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center" style="display:none;">
+                                Morning Check In
+                            </h4>
+                            <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" hidden />
+                            <label>00:00:00</label>
+                            <div class="btn-container mx-auto mt-5">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check In <i class="fas fa-check fa-fw"></i> </button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>*@
+               @*     <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center">
+                                Morning Check Out
+                            </h4>
+                            <input name="EmployeeId" id="MorningCheckout" class="form-control code-input" placeholder="Enter your Id" hidden />
+                            <label>00:00:00</label>
+                            <div class="btn-container mx-auto mt-5">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block" hidden>Check Out <i class="fas fa-sign-out-alt fa-fw"></i></button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>*@
+                    <div class="col-md-15 col-sm-12">
+
+                        <div class="form-group">
+                            <h4 class="mb-5 pb-2 text-center">
+                                Afternoon Check In
+                            </h4>
+                            <input name="EmployeeId" id="AfternoonCheckin" class="form-control code-input" placeholder="Enter your Id" />
+
+                            <div class="btn-container mx-auto mt-3">
+                                <button type="submit" class="btn btn-glow-dark btn-info btn-block">Check In <i class="fas fa-check fa-fw"></i> </button>
+                            </div>
+                            <p class="text-danger"></p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </form>
+
+
+
+    </div>
+    <div class="row mx-auto">
+        <div class="col-md-5 mx-auto">
+            <img src="~/assets/images/attendance.jpg" alt="Attendance Vector" class="img-fluid" />
+        </div>
+
+    </div>
+    <div class="container mt-5">
+        <div class="table-responsive px-5 pb-3">
+            <table class="table table-border table-hover">
+                <thead>
+                    <tr>
+                        <th rowspan="2"># ID</th>
+
+                        @* <th rowspan="2">Date</th>*@
+                        <th colspan="2" class="table-secondary text-center">Morning</th>
+                        <th colspan="2" class="table-secondary text-center">Afternoon</th>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            Check In
+                        </th>
+                        <th>
+                            Check Out
+                        </th>
+                        <th>
+                            Morning Working Hour
+                        </th>
+                        <th>
+                            Check In
+                        </th>
+                        <th>
+                            Check Out
+                        </th>
+                        <th>
+                           Afternoon Working Hour
+                        </th>
+                        <th>
+                            Total Work Hour
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row100">
+                        @if (Model != null)
+                        {
+                            <td class="column100 column1" data-column="column1">
+
+                                @Model.Employee.EmployeeCode
+
+                            </td>
+                            <td class="column100 column2" data-column="column2">
+                                @Model.MorningCheckin
+                            </td>
+                            <td class="column100 column3" data-column="column3">
+                                @Model.MorningCheckout
+                            </td>
+                            <td class="column100 column4" data-column="column4">
+                                @Model.MorningWorkingHour
+                            </td>
+                            <td class="column100 column4" data-column="column4">
+                                @Model.AfternoonCheckin
+                            </td>
+                            <td class="column100 column5" data-column="column5">
+                                @Model.AfternoonCheckout
+                            </td>
+                            <td class="column100 column5" data-column="column5">
+                                @Model.AfternoonWorkingHour
+                            </td>
+
+                            <td class="column100 column5" data-column="column5">
+                                @if (Model.WorkHour == TimeSpan.Zero)
+                                {
+                                    <span class="badge badge-danger p-1">Incomplete</span>
+                                }
+                                else
+                                {
+                                    <span class="text-success font-weight-bold f-16"> @Model.WorkHour</span>
+                                }
+                            </td>
+
+                    <td class="column100 column5" data-column="column5">
+                      
+                        @{ var latecome = ViewData["LateCome"] as Erp.Models.LateCome;
+
+                        }
+
+                        @if (Model.MorningCheckin > latecome.MorningLate)
+                        {
+                            <span class="badge badge-danger p-1">Late</span>
+                        }
+                        else if (Model.MorningCheckin == TimeSpan.Zero & Model.MorningCheckout == TimeSpan.Zero & Model.AfternoonCheckin == TimeSpan.Zero & Model.AfternoonCheckout == TimeSpan.Zero)
+                        {
+                            <span class="text-success font-weight-bold f-16"> Absent </span>
+
+                        }
+                        else
+                        {
+                            <span class="text-success font-weight-bold f-16"> Present </span>
+                        }
+                    </td>
+
+                        }
+                        
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+@section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

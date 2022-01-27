@@ -1,0 +1,184 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Profile - ERP</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style1.css">
+</head>
+<body>
+    <div class="page-wrapper mx-auto mb-4 pt-5 pb-5 container shadow-lg">
+        <div class="content">
+            <div class="card-box profile-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="profile-view"></h5>
+                        <form id="profile-form" method="post" enctype="multipart/form-data">
+                            <div class="profile-img-wrap">
+                                <div class="profile-img">
+                                    @if (Model.Input.ProfilePicture != null)
+                                    {
+                                        <img id="profilePicture" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
+                                    }
+                                    else
+                                    {
+                                        <img id="profilePicture" class="avatar" src="~/assets/images/user/avatar-1.jpg">
+                                    }
+
+                                    <div class="fileupload btn text-center">
+                                        <span class="btn-text text-left">edit</span>
+                                        <input type="file" accept=".png,.jpg,.jpeg,.gif,.tif" asp-for="Input.ProfilePicture"
+                                               class="upload" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                                               onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                                        <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            @if (Model.InputEmp != null)
+                            {
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="profile-info-left">
+                                                <h3 class="user-name m-t-0 mb-0"><span>@Model.InputEmp.FirstName</span>   <span>@Model.InputEmp.LastName</span></h3>
+                                                <small class="text-muted">@Model.InputEmp.Position</small>
+                                                <div class="staff-id">Employee Id -@Model.InputEmp.EmployeeCode</div>
+                                                <div class="staff-msg"> <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <ul class="personal-info">
+                                                <li>
+                                                    <span class="title">Phone:</span>
+                                                    <span class="text">@Model.InputEmp.Mobile</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Email:</span>
+                                                    <span class="text">@Model.Input.Username</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Birthday:</span>
+                                                    <span class="text">@Model.InputEmp.Dob.ToString("dd ddd MMMM, yyyy")</span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Gender:</span>
+                                                    @if (Model.InputEmp.Sex == "Male")
+                                                    {
+                                                        <span class="text-right"><i class="fas fa-male fa-fw fa-1x" style="color: cadetblue;"></i> @Model.InputEmp.Sex</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="text-right"><i class="fas fa-female fa-fw fa-1x" style="color: yellowgreen;"></i> @Model.InputEmp.Sex</span>
+                                                    }
+                                                   
+                                                </li>
+                                              
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+
+                        @if (Model.InputEmp != null)
+                        {
+                            <h4 class="pt-5 mt-3">Your Details</h4>
+                            <hr />
+                            <div class="row  mt-3">
+
+                                <div class="col-lg">
+                                    <div class=" card-block task-details p-0">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Nationality:</td>
+                                                    <td class="text-right">
+
+                                                        @Model.InputEmp.Nationality
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-phone fa-fw"></i> Home Telephone:</td>
+                                                    <td class="text-right">  @Model.InputEmp.HomeTelephone</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><i class="far fa-calendar-alt m-r-5  fa-fw"></i> Work Telephone:</td>
+                                                    <td class="text-right">  @Model.InputEmp.WorkTelephone</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fas fa-fax fa-fw"></i> Fax:</td>
+                                                    <td class="text-right">@Model.InputEmp.Fax</td>
+                                                </tr>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class=" card-block task-details p-0">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="far fa-calendar-alt m-r-5"></i> Region:</td>
+                                                    <td class="text-right">
+
+                                                        @Model.InputEmp.Region
+                                                         
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="far fa-calendar-alt m-r-5"></i> City:</td>
+                                                    <td class="text-right">  @Model.InputEmp.City</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><i class="far fa-calendar-alt m-r-5"></i> Woreda:</td>
+                                                    <td class="text-right">  @Model.InputEmp.Woreda</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="far fa-calendar-alt m-r-5"></i> Country:</td>
+                                                    <td class="text-right">@Model.InputEmp.Country</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                           
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+        </div>
+    </div>
+
+    <script src="~/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

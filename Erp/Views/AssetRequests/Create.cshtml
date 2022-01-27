@@ -1,0 +1,53 @@
+﻿@model Erp.Models.AssetRequest
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+
+<div class="card">
+    <div class="card-header border-bottom-0">
+        <div class="card-title mb-5">
+            <h5 class="text-muted text-"> Asset Requesting Form </h5>
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Asset" class="control-label">Asset Name</label>
+                <input asp-for="Asset" class="form-control" placeholder="Enter Department Name" />
+                <span asp-validation-for="Asset" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter the asset you want to request . . ."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="reset" value="Clear" class="btn btn-glow-dark btn-secondary  mr-3" />
+                            <input type="submit" value="Submit" class="btn btn-glow-dark btn-primary ml-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

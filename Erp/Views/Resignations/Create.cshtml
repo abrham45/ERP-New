@@ -1,0 +1,48 @@
+﻿@model Erp.Models.Resignation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container px-5">
+
+<div class="card">
+    <div class="card-header border-bottom-0">
+        <div class="card-title mb-5">
+            <h5 class="text-muted text-">Resignation Requesting Form </h5>
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+
+            <div class="form-group">
+                <label asp-for="Reason" class="control-label">Reason</label>
+                <textarea asp-for="Reason" class="form-control" rows="3" placeholder="Enter the reason to the request....."></textarea>
+                <span asp-validation-for="Reason" class="text-danger"></span>
+            </div>
+
+
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+
+                            <input type="submit" value="Submit" class="btn btn-glow-dark btn-primary ml-4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -1,0 +1,76 @@
+﻿@model Erp.Models.AssetTypeRisk
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Asset Type Risk  </h5>
+            </div>
+        </div>
+
+        <form asp-action="Edit">
+            @if (TempData.ContainsKey("Error"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-0 m-0">
+
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Asset_typeId" class="control-label">Risk Type </label>
+                            <select asp-for="Asset_typeId" class="form-control" asp-items="ViewBag.Asset_typeId"></select>
+                            <span asp-validation-for="Asset_typeId" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="FailureProbability">Failure Probability</label>
+                            <input asp-for="FailureProbability" class="form-control" placeholder=" Enter Priority .." required />
+                            <span asp-validation-for="FailureProbability" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Loss">Expected Loss</label>
+                            <input asp-for="Loss" class="form-control" placeholder=" Enter Expected Loss...." required />
+                            <span asp-validation-for="Loss" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

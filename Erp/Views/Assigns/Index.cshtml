@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<Erp.Models.Assign>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+            Project Task
+        </h3>
+    
+        <div class="card-body">
+
+            @if (TempData.ContainsKey("Success"))
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData.ContainsKey("Warning"))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Warning"]
+                </div>
+            }
+
+        <table class="table table-bordered table-responsive-md table-striped text-center" id="demoA">
+            <thead>
+                <tr>
+                    <th class="text-center">Tasks Name</th>
+                    <th class="text-center">Duration</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Task Cost</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Task Progress</th>
+                    <th class="text-center">Percent(%) Coverage</th>
+                    <th class="text-center" style="color:red;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model.GroupBy(e => e.ProjectId))
+                {
+                 <span class="p-2 font-weight-bolder" style="color:green;">@items.Key</span> 
+
+
+                    @foreach (var item in items)
+                    {
+                                <tr>
+                                    <td>
+                                        @item.Tasks.TaskName
+                                    </td>
+                                    <td>
+                                        @item.Tasks.Duration
+                                    </td>
+                                    <td>
+                                        @item.Tasks.Description
+                                    </td>
+                                    <td>
+                                        @item.Tasks.TaskCost
+                                    </td>
+                                    <td>
+                                        @if (item.Tasks.Status == true)
+                                        {
+                                            <a class="label theme-bg text-white f-12 rounded"> Completed</a>
+                                        }
+                                        else if (item.Tasks.Status == false)
+                                        {
+                                            <a class="label theme-bg2 text-white f-12 rounded"> In Progress</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="label badge-light   f-12 rounded"> Not Started</a>
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        @item.Tasks.TaskProgress
+                                    </td>
+                                    <td>
+                                        @item.Tasks.PercentCoverage
+                                    </td>
+
+                                    <td>
+                                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+                                        <a asp-action="Edit" asp-route-id="@item.Tasks.Id" style="color:green;">
+                                            <i class="fa fa-pencil-alt fa-fw"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                      
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+   
+}
+

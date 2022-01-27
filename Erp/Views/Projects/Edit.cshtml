@@ -1,0 +1,120 @@
+﻿@model Erp.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container px-5">
+    <div class="container px-5">
+        <div class="card p-3">
+            <div class="card-header border-bottom-0">
+                <div class="card-title mb-5">
+                    <h5 class="text-muted text-">Update Project </h5>
+                </div>
+            </div>
+            <div>
+                @if (TempData.ContainsKey("Warning"))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @TempData["Warning"]
+                    </div>
+                }
+                @if (TempData.ContainsKey("Success"))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["Success"]
+                    </div>
+                }
+            </div>
+            <form asp-action="Edit">
+             
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row p-0 m-0">
+
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectName">Project Name </label>
+                                <input asp-for="ProjectName" class="form-control" placeholder=" Enter Project Name .." required />
+                                <span asp-validation-for="ProjectName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectBudget">Project Budget</label>
+                                <input asp-for="ProjectBudget" class="form-control" placeholder=" Enter Project Budgeting" required />
+                                <span asp-validation-for="ProjectBudget" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="EmployeeId">Employee Id</label>
+                                <input name="EmployeeId" asp-for="Employee.EmployeeCode" class="form-control" placeholder=" Enter Employee Id..." required />
+                                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectStartDate">Project Start Date</label>
+                                <input asp-for="ProjectStartDate" class="form-control" placeholder=" Enter Project Start Date .." required />
+                                <span asp-validation-for="ProjectStartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectDuration">Project Duration (in Months)</label>
+                                <input asp-for="ProjectDuration" class="form-control" placeholder=" Enter ProjectDuration in Months .." required />
+                                <span asp-validation-for="ProjectDuration" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectDescription" class="control-label">Project Description</label>
+                                <textarea asp-for="ProjectDescription" class="form-control "></textarea>
+                                <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-0">
+                            <div class="form-group  p-3">
+                                <label asp-for="ProjectDescription" class="control-label">Project Status</label>
+                                <select asp-for="ProjectDescription" class="form-control ">
+                                    <option value="true">Completed</option>
+                                    <option value="false">Not Started</option>
+                                    <option value="null">In Progress</option>
+                                </select>
+                                <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="card-footer bg-white p-2">
+                    <div class="row p-0 m-0">
+                        <div class="col align-self-start pl-3">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                        <div class="col-2  align-self-end  p-0">
+                            <div class="form-group mb-0">
+
+                            
+                                <input type="submit" value="Save" class="btn btn-glow-dark btn-primary ml-4" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+

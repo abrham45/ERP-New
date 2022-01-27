@@ -1,0 +1,91 @@
+﻿@model Erp.Models.DriverAllocation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="card-header">
+        Driver Allocation Detail
+    </div>
+    <div class="row p-3 justify-content-between">
+        <div class="col-md-6 shadow-3">
+            <div class=" card-block task-details p-0 ">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Route:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.Route.StartPoint)   @Html.DisplayFor(model => model.Route.Destination)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-id-card  fa-fw"></i> Distance:</td>
+                            <td class="text-right">  @Model.Route.Distance km</td>
+                        </tr>
+
+                        <tr>
+                            <td><i class="far fa-calendar-alt m-r-5  fa-fw"></i> Expenses:</td>
+                            <td class="text-right">  @Html.DisplayFor(model => model.Route.Expenses) ETB</td>
+                        </tr>
+
+                        @*  <tr>
+                        <td><i class="fas fa-question  fa-fw"></i> Status:</td>
+                        <td class="text-right">
+                            @if (Model.Status == true)
+                            {
+                                <span class="badge badge-info p-1">Currently Working </span>
+                            }
+                            else if (Model.Status == false)
+                            {
+                                <span class="badge badge-warning">Not working</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Pending </span>
+                            }
+
+                        </td>
+                    </tr>*@
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 shadow-3">
+            <div class=" card-block task-details p-0 spa">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-user-alt m-r-5  fa-fw"></i> Vehicle:</td>
+                            <td class="text-right">
+
+                                @Html.DisplayFor(model => model.Vehicle.Model)
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="far fa-id-card  fa-fw"></i> Plate Number:</td>
+                            <td class="text-right">  @Model.Vehicle.PlateNumber</td>
+                        </tr>
+
+                        <tr>
+                            <td><i class="far fa-calendar-alt m-r-5  fa-fw"></i>Vehicle Type:</td>
+                            <td class="text-right">  @Html.DisplayFor(model => model.Vehicle.vechiclesType.Type) </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+
+</div>

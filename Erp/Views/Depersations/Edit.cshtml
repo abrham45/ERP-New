@@ -1,0 +1,77 @@
+﻿@model Erp.Models.Depersation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container px-5">
+    <div class="card p-3">
+        <div class="card-header border-bottom-0">
+            <div class="card-title mb-5">
+                <h5 class="text-muted text-"> Annual Depersation Cost </h5>
+            </div>
+        </div>
+
+        <form asp-action="Edit">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-0 m-0">
+                    @if (TempData.ContainsKey("Error"))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label>Asset Factory Number</label>
+                            <input name="AssetId" class="form-control" placeholder=" Enter Factory number .." required />
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Salvage_Value">Salvage Value</label>
+                            <input asp-for="Salvage_Value" class="form-control" placeholder=" Enter Salvage Value .." required />
+                            <span asp-validation-for="Salvage_Value" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-0">
+                        <div class="form-group  p-3">
+                            <label asp-for="Useful_Life_Time">Useful Life Time</label>
+                            <input asp-for="Useful_Life_Time" class="form-control" placeholder=" Enter Useful Life Time .." required />
+                            <span asp-validation-for="Useful_Life_Time" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="card-footer bg-white p-2">
+                <div class="row p-0 m-0">
+                    <div class="col align-self-start pl-3">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <div class="col-2  align-self-end  p-0">
+                        <div class="form-group mb-0">
+
+                            <input type="reset" value="Clear" class="btn btn-glow-dark btn-secondary  mr-3" />
+                            <input type="submit" value="Create" class="btn btn-glow-dark btn-primary ml-4" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
